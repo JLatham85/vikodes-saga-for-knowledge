@@ -1,16 +1,12 @@
-# Gloomhaven Universe
+# Vikode's Saga for Knowledge
 
-### [**Gloomhaven Universe**](https://jlatham85.github.io/gloomhaven-universe/)
+### [**Enter Saga**](https://github.com/JLatham85/vikodes-saga-for-knowledge)
 
 <!--Write a paragraph ot 2 About the website, it's function and goals-->
 
-Gloomhaven Universe is all about inviting beginners through to experts to the world of boardgame RPG's. Starting with Gloomhaven (one of the old hats) and it's 3 other boardgames although all seperate belong to the same universe.
+Vikode’s Saga for Knowledge is a dynamic, quiz-based web application forged in the fires of HTML, CSS, and JavaScript. Designed as a battle between mind and myth, this site transforms traditional learning into an interactive duel—where each question is a strike, and each answer shapes the outcome of a fight scene above.
 
-With the content set to intrigue and explore and the features to teach and play. From fun introductions to each of the games, to the "How to plays" and of course the exciting part actually playing.
-
-Visitors will have an option to join live sessions, provide feedback for site development, option to review games, book learning/ taster sessions. Playing session starting with the online version working upto to the physical boardgames.
-
-![Mock UP on All devices](docs/design/mock-up-devices.png)
+The goal of this project is to gamify knowledge acquisition through responsive feedback, immersive visuals, and progressive challenge. Users engage in quiz battles, earning damage for correct answers and taking hits for mistakes. Future expansions may include flashcard rituals for missed questions, difficulty glyphs, unlockable warriors, and gear upgrades—making this not just a quiz, but a journey through the realms of learning.
 
 <!--Insert img with the different platforms and how the screen is displayed-->
 
@@ -72,14 +68,16 @@ Visitors will have an option to join live sessions, provide feedback for site de
 
 ## User Goals<!--Add what I believe the user goals are-->
 
-- Learn about the Role Playing Game (RPG's) Gloomhaven
-- Learn about the Universe of Gloomhaven
-- Learn How to Play Gloomhaven
-- Play Gloomhaven
-- Ease of Navigation
-- Clear instructions in English (potentially other languages)
-- Book/ register for learning session
-- Book/ arrange meetups to play physical boardgame(s)
+The primary goal of Vikode’s Saga for Knowledge is to transform learning into an engaging, interactive experience. Users aren’t just answering questions—they’re stepping into a battle arena where knowledge becomes power and every answer shapes the outcome of a fight.
+
+This project aims to:
+
+- Make learning fun and immersive through gamified quiz mechanics
+- Provide immediate feedback with visual cues and health-based consequences
+- Encourage replayability and mastery by tracking performance and offering future   flashcard reviews
+- Support different learning styles with visual storytelling, interactive elements, and progressive challenge
+
+By blending education with narrative and interactivity, this saga invites users to learn not just with their minds—but with their mythic spirit.
 
 [Back to Contents](#contents)
 
