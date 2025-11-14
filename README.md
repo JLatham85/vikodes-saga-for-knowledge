@@ -85,29 +85,14 @@ By blending education with narrative and interactivity, this saga invites users 
 
 To ensure the Saga for Knowledge meets the needs of its adventurers, the following user stories were considered during development:
 
-- Understanding the Realm
-As a new user, I want clear instructions and intuitive navigation so I can understand how to play and learn without confusion.
-
-- Ease of Accessibility
-As a user with varying needs, I want the site to be accessible across devices and screen readers so I can engage with the content comfortably.
-
-- Consistency Throughout the Site
-As a returning user, I want consistent design and behavior across all pages so I feel immersed in a cohesive experience.
-
-- Introduction Sessions
-As a first-time visitor, I want a brief tutorial or onboarding so I can understand how quiz battles work before diving in.
-
-- Flashcard Rituals
-As a learner, I want to review questions I got wrong so I can improve and track my progress over time.
-
-- Battle Feedback
-As a player, I want visual feedback (damage dealt or received) based on my answers so I feel engaged and motivated to improve.
-
-- Difficulty Glyphs
-As a seasoned warrior, I want to choose my challenge level so I can tailor the experience to my skill and mood.
-- Unlockable Warriors and Gear
-As a frequent user, I want to unlock new characters and gear so I feel rewarded for continued learning.
-
+- Understanding the Realm [#1](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/2)
+- Ease of Accessibility [#2](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/3)
+- Consistency Throughout the Site [#3](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/4)
+- Introduction Sessions [#4](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/5)
+- Flashcard Rituals [#5](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/1)
+- Battle Feedback [#6](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/6)
+- Difficulty Glyphs [#7](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/7)
+- Unlockable Warriors and Gear [#8](https://github.com/JLatham85/vikodes-saga-for-knowledge/issues/8)
 
 [Back to Contents](#contents)
 
