@@ -83,17 +83,31 @@ By blending education with narrative and interactivity, this saga invites users 
 
 ## User Stories<!--Use github project and use link-->
 
-- Understanding Gloomhaven [#1](https://github.com/JLatham85/gloomhaven-universe/issues/1)
+To ensure the Saga for Knowledge meets the needs of its adventurers, the following user stories were considered during development:
 
-- Ease of Accessibility [#2](https://github.com/JLatham85/gloomhaven-universe/issues/2)
+- Understanding the Realm
+As a new user, I want clear instructions and intuitive navigation so I can understand how to play and learn without confusion.
 
-- Consitency throughout Site [#3](https://github.com/JLatham85/gloomhaven-universe/issues/3)
+- Ease of Accessibility
+As a user with varying needs, I want the site to be accessible across devices and screen readers so I can engage with the content comfortably.
 
-- Introduction Sessions [#4](https://github.com/JLatham85/gloomhaven-universe/issues/4)
+- Consistency Throughout the Site
+As a returning user, I want consistent design and behavior across all pages so I feel immersed in a cohesive experience.
 
-- Meet Up Sessions [#5](https://github.com/JLatham85/gloomhaven-universe/issues/5)
+- Introduction Sessions
+As a first-time visitor, I want a brief tutorial or onboarding so I can understand how quiz battles work before diving in.
 
-- Site option to change languages [#6](https://github.com/JLatham85/gloomhaven-universe/issues/6)
+- Flashcard Rituals
+As a learner, I want to review questions I got wrong so I can improve and track my progress over time.
+
+- Battle Feedback
+As a player, I want visual feedback (damage dealt or received) based on my answers so I feel engaged and motivated to improve.
+
+- Difficulty Glyphs
+As a seasoned warrior, I want to choose my challenge level so I can tailor the experience to my skill and mood.
+- Unlockable Warriors and Gear
+As a frequent user, I want to unlock new characters and gear so I feel rewarded for continued learning.
+
 
 [Back to Contents](#contents)
 
