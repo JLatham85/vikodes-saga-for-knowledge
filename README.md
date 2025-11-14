@@ -309,7 +309,13 @@ The completed website will be responsive to the Bootstrap breakpoints, which wil
 
 - Forms for booking and feedback to be able to continually improve.
 
-- Gallery section
+- Users answer questions to deal damage or receive it, turning learning into a dynamic combat experience.
+- Both player and enemy have health bars that respond to correct and incorrect answers, adding visual feedback and urgency.
+- Each answer triggers animations and effects that reinforce learning outcomes and keep users engaged.
+- Users can retake battles to improve their score, reinforcing mastery through repetition.
+- The site adapts across devices, ensuring accessibility and usability for all adventurers.
+- Semantic HTML, ARIA roles, and alt-text ensure the experience is inclusive and screen-reader friendly.
+- Fonts, colors, and layout choices reflect a mythic tone, immersing users in a story-rich learning environment.
 
 <!--Add additional when wireframe designs is done-->
 
@@ -321,13 +327,16 @@ The completed website will be responsive to the Bootstrap breakpoints, which wil
 
 ## Future Improvements<!--Add targets once website complete-->
 
-- Add another section for Gloomhaven: Jaws of Lion
-
-- Add forum so the community can talk and potentially find people to play the games in bigger groups
-
-- FAQ's section for anyones queries that have been answered and common question asked about the group of games.
-
-- Create different bookings forms so when booking a slot the form pre-fills saving customer time and clicks.
+- Add Flashcard Review Mode for missed questions, allowing users to revisit and master difficult topics
+- Introduce Difficulty Levels to tailor quiz battles to different skill levels
+- Implement Unlockable Characters and Gear as rewards for progress and replayability
+- Expand Question Categories to support broader learning themes and subject areas
+- Add Multilingual Support to make the experience accessible to non-English speakers
+- Create Progress Tracking with stats, streaks, and achievements
+- Enhance Accessibility Features including keyboard navigation and contrast toggles
+- Develop Admin Panel for educators to upload custom questions and monitor learner progress
+- Integrate Sound Effects and Music to deepen immersion and emotional feedback
+- Explore Mobile Optimization and potential app deployment for on-the-go learning
 
 [Back to Contents](#contents)
 
@@ -338,27 +347,38 @@ The completed website will be responsive to the Bootstrap breakpoints, which wil
 
 #### **Languages**
 
-- HTML5
-- CSS
-- JS
+- HTML5 — For semantic structure and accessible layout
+- CSS3 — For styling, responsive design, and immersive visual presentation
+- JavaScript (ES6+) — For interactivity, animations, and quiz logic
+- Markdown — Used for documentation, including README and GitHub issues
 
 #### **Libraries and Framework** <!--List below is genric add/ remove where necessary-->
 
-- Bootstrap
-- Font Awesone
-- Google Fonts
+- jQuery — Simplifies DOM traversal, event handling, and animations
+- Font Awesome — Provides scalable vector icons for UI elements and feedback
+- Google Fonts — Delivers custom typography (e.g., Cinzel, Open Sans) for immersive styling
+- Bootstrap or Tailwind (optional) — For rapid layout prototyping or utility-based styling
 - Favicon
+
+Planned or optional additions:
+- Chart.js — For visualizing progress, stats, or flashcard performance
+- i18next — For future multilingual support and internationalization
+- GSAP or Anime.js — For advanced animations and battle effects
 
 #### **Tools** <!--List below is genric add/ remove where necessary-->
 
-- VS Code
-- GitHub
-- GitPod
-- Balsamiq
-- W3C HTML Validation
-- W3C CSS Validation
-- Copilot
-- Canva
+- Visual Studio Code — Primary code editor for HTML, CSS, and JavaScript development
+- Git & GitHub — Version control and collaborative repository management
+- GitHub Projects — For tracking user stories, tasks, and progress
+- Figma (planned) — For wireframe design and UI prototyping
+- Google Fonts — For importing custom typefaces
+- Font Awesome — For scalable iconography
+- WAVE & Lighthouse — For accessibility and performance testing
+- W3C HTML Validator — Ensures semantic, standards-compliant HTML structure
+- W3C CSS Validator — Verifies CSS syntax and flags potential styling issues
+- Copilot — AI-powered coding companion used for iterative development, debugging, and creative problem-solving
+- Markdown — For structured documentation and GitHub formatting
+- Netlify / GitHub Pages — For deployment and live hosting
 
 </details>
 
@@ -507,7 +527,7 @@ Gloomhaven Universe was officially deployed early on in the project, as I found 
 
 - Click on PAGES on the left pane.
 
-- Then SAVE 
+- Then SAVE
 
 - Website live address [GitHub live address](https://jlatham85.github.io/gloomhaven-universe)
 
