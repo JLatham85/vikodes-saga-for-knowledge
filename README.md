@@ -98,25 +98,31 @@ To ensure the Saga for Knowledge meets the needs of its adventurers, the followi
 
 ## Website Goals and Objective<!--Whats my aim for this website-->
 
-- Introduce the world of Boardgames via the Gloomhaven Universe
-- Introduce the genre RPG's physical and on PC
-- Help understand the gloomhaven mechanics
-- Have intro sessions for people to learn
-- Have an area where people can meet up and play
-- Have a FAQ's board to assist with learning
-- Expand to have a boardgames rating board by those who have played the games
-- Expand the platform to more games
-- Expand platform to include a shop
+The goal of Vikode’s Saga for Knowledge is to create a dynamic, interactive learning experience that merges quiz-based gameplay with narrative immersion. This project aims to:
+
+- Transform traditional quizzes into engaging battle scenes
+- Encourage learning through visual feedback and responsive interactivity
+- Provide users with tools to track progress and revisit missed questions
+- Offer scalable features like difficulty levels, unlockable characters, and gear upgrades
+- Meet all MS2 requirements including custom code, structured layout, documentation, and deployment
+- Make learning fun, replayable, and emotionally resonant
+
+This site is not just a tool—it’s a journey through knowledge, where every answer is a step forward and every mistake a lesson earned.
 
 [Back to Contents](#contents)
 
 ## Target Audience<!--Who or what audience is the website aimed at-->
 
-- Boardgame players from beginner to expert
-- General people who are interested
-- Local event groups
-- Boardgame reviewers
-- Boardgame shops
+This project is designed for:
+
+- Learners who enjoy gamified experiences and visual storytelling
+- Beginners seeking an accessible, engaging way to test and build knowledge
+- Users who benefit from immediate feedback and interactive progression
+- Adventurers who want to track their growth and revisit past challenges
+- Educators or mentors looking for creative ways to present quiz content
+- Anyone who believes learning should feel like a quest—not a chore
+
+Whether you’re a seasoned warrior or a curious newcomer, Vikode’s Saga for Knowledge invites you to learn boldly, battle wisely, and grow mythically.
 
 [Back to Contents](#contents)
 
@@ -223,19 +229,19 @@ To ensure the Saga for Knowledge meets the needs of its adventurers, the followi
 
 #### **Typography**
 
-I have decided to go with 3 different fonts to keep inline with boargaming theme, please see below table for fonts and uses. I have chose these fonts to keep it clean and easy readable but to also have differentials and make the website pop a little. I will also have sans-serif font to back in case original choices fail.
+To reflect the mythic tone and interactive nature of Vikode’s Saga for Knowledge, the following typefaces were chosen (review table below). These fonts were selected to balance narrative immersion with functional clarity, ensuring users can engage with the content while feeling part of a mythic journey. I will also have sans-serif font to back in case original choices fail.
 
-| Font             |      Utilisation      |
-| ---------------- | :-------------------: |
-| Anton            | Main titles for pages |
-| Permanent Marker |  Subtitles for pages  |
-| Oswald           |   Main body of text   |
+| Font             |      Utilisation         |
+| ---------------- | :----------------------: |
+| Cinzel           | Main titles & Headings   |
+| Open Sans        | Main body of text        |
+| Accent Font      | Sparingly for UI elements|
 
 #### **Color Scheme** <!--Use a contrast site as well and mention this-->
 
 <!--CSS Name - Color in css thats pre-determined-->
 
-The color scheme is based of the original Gloomhaven box to keep on theme with project. [Coolers](https://coolors.co/) was the website used for color pallette.
+The color scheme for Vikode’s Saga for Knowledge was chosen to evoke the intensity of battle, the elegance of myth, and the clarity of learning. [Coolers](https://coolors.co/) was the website used for color pallette.
 
 - [Color Palette](docs/design/color-palette.png)
 
@@ -251,15 +257,15 @@ All the below where contrasted then selected for the different categories and wi
 
 | CSS Name      |   HEX   |       RGB        | Comment                                    |
 | ------------- | :-----: | :--------------: | ------------------------------------------ |
-| Cafe Noir     | #513B22 |  rgb(81 59 31)   | Background for forms and unhovered buttons |
-| Dutch White   | #DBD3AD | rgb(219 211 173) | Foreground for forms and unhovered buttons |
-| Captum motuum | #513125 |  rgb(81 49 37)   | Background for hovered buttons             |
-| Dutch White   | #DBD3AD | rgb(219 211 173) | Foreground for hovered buttons             |
-| Bistre        | #28160A |  rgb(40 22 10)   | Background for Header and Footer           |
-| Dutch White   | #DBD3AD | rgb(219 211 173) | Foreground for Header and Footer           |
-| Raw umber     | #966F51 | rgb(150 111 81)  | Highlight color in Header footer for links |
-| Dutch White   | #DBD3AD | rgb(219 211 173) | Main page Background                       |
-| Bistre        | #28160A |  rgb(40 22 10)   | Main font color for main pages             |
+| White     | #FFFFFF |  rgb(81 59 31)   | Background for forms and unhovered buttons |
+| Fire Brick   | #B22222 | rgb(219 211 173) | Foreground for forms and unhovered buttons |
+| Fire Brick | #B22222 |  rgb(81 49 37)   | Background for hovered buttons             |
+| White   | #FFFFFF | rgb(219 211 173) | Foreground for hovered buttons             |
+| Fire Brick        | #B22222 |  rgb(40 22 10)   | Background for Header and Footer           |
+| Gold   | #FFD700 | rgb(219 211 173) | Foreground for Header and Footer           |
+| White     | #FFFFFF | rgb(150 111 81)  | Highlight color in Header footer for links |
+| Eerie Black   | #1C1C1C | rgb(219 211 173) | Main page Background                       |
+| Gold        | #FFD700 |  rgb(40 22 10)   | Main font color for main pages             |
 
 #### **Images** <!--Insert any tools used to generate images and add which programme we used to render-->
 
