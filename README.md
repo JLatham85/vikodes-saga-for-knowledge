@@ -133,74 +133,77 @@ Whether you’re a seasoned warrior or a curious newcomer, Vikode’s Saga for K
 
 #### **Home Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Mobile, iPad & Navbar Wireframes](docs/wireframes/home-wireframe-mobile-ipad-navbar.png)
-- [Version 2 Design due to flaws in version 1 for Mobile, iPad & Navbar Wireframe](docs/wireframes/v2-home-wireframe-mobile-ipad-navbar.png)
+- [Mobile, iPad & Navbar Wireframes](docs/wireframes/home-mobile-ipad.png)
+- [Laptop Wireframe](docs/wireframes/home-laptop.png)
+- [Desktop Wireframe](docs/wireframes/home-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/home-wireframe-laptop.png)
-- [Version 2 Design due to flaws in version 1 for Laptop Wireframe](docs/wireframes/v2-home-wireframe-laptop.png)
+#### **Play Game Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](docs/wireframes/home-wireframe-desktop.png)
-- [Version 2 Design due to flaws in version 1 for Mobile, iPad & Navbar Wireframe](docs/wireframes/v2-home-wireframe-desktop.png)
+- [Mobile, iPad Wireframes](docs/wireframes/play-game-mobile-ipad.png)
 
-#### **Buttons & Bugs Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Laptop Wireframe](docs/wireframes/how-to-play-laptop.png)
 
-- [Mobile, iPad Wireframes](docs/wireframes/buttons-and-bugs-mobile-ipad.png)
+- [Desktop Wireframe](docs/wireframes/play-game-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/buttons-and-bugs-laptop.png)
+#### **GloomhavenHow to Play Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](docs/wireframes/buttons-and-bugs-desktop.png)
+- [Mobile, iPad Wireframes](docs/wireframes/how-to-play-mobile-ipad.png)
 
-#### **Gloomhaven Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Laptop Wireframe](docs/wireframes/quiz-laptop.png)
 
-- [Mobile, iPad Wireframes](docs/wireframes/gloomhaven-mobile-ipad.png)
+- [Desktop Wireframe](/docs/wireframes/how-to-play-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/buttons-and-bugs-laptop.png)
+#### **Saga of Knowledge Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](/docs/wireframes/buttons-and-bugs-desktop.png>)
+- [Mobile, iPad Wireframes](docs/wireframes/topic-level-mobile-ipad.png)
 
-#### **Frosthaven Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Laptop Wireframe](docs/wireframes/topic-level-laptop.png)
 
-- [Mobile, iPad Wireframes](docs/wireframes/frosthaven-mobile-ipad.png)
+- [Desktop Wireframe](docs/wireframes/topic-level-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/frosthaven-laptop.png)
+#### **Quiz Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](docs/wireframes/frosthaven-desktop.png)
+- [Mobile, iPad Wireframes](docs/wireframes/quiz-mobile-ipad.png)
 
-#### **Gloomhaven Online Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Laptop Wireframe](docs/wireframes/topic-level-laptop.png)
 
-- [Mobile, iPad Wireframes](docs/wireframes/gloomhaven-online-mobile-ipad.png)
+- [Desktop Wireframe](docs/wireframes/topic-level-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/gloomhaven-online-laptop.png)
+#### **EventsAnswer pop-up Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](docs/wireframes/gloomhaven-online-desktop.png)
+- [Mobile, iPad Wireframes](docs/wireframes/answer-quiz-mobile-ipad.png)
 
-#### **Events Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Laptop Wireframe](docs/wireframes/answer-quiz-laptop.png)
 
-- [Mobile, iPad Wireframes](docs/wireframes/events-mobile-ipad.png)
+- [Desktop Wireframe](docs/wireframes/answer-quiz-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/events-laptop.png)
+#### **Quiz Complete Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](docs/wireframes/events-desktop.png)
+- [Mobile, iPad Wireframes](docs/wireframes/complete-mobile-ipad.png)
 
-#### **Contacts Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Laptop Wireframe](docs/wireframes/completed-laptop.png)
 
-- [Mobile, iPad Wireframes](docs/wireframes/conatacts-mobile-ipad.png)
+- [Desktop Wireframe](docs/wireframes/completed-desktop.png)
 
-- [Laptop Wireframe](docs/wireframes/conatacts-laptop.png)
+#### **Flash Cards Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Desktop Wireframe](docs/wireframes/conatacts-desktop.png)
+- [Meetup Form Wireframe](docs/wireframes/flash-cards-mobile-ipad.png)
 
-#### **Form Pop Ups Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+- [Introduction Form Wireframe](docs/wireframes/home-laptop.png)
 
-- [Meetup Form Wireframe](docs/wireframes/form-meet-up.png)
+- [Success Form](docs/wireframes/flash-cards-desktop.png)
 
-- [Introduction Form Wireframe](docs/wireframes/form-introduction.png)
+#### **Battle Armament Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
-- [Success Form](docs/wireframes/form-success.png)
+- [Mobile, iPad Wireframes](docs/wireframes/battle-armament-mobile-ipad.png)
+
+- [Laptop Wireframe](docs/wireframes/battle-armament-laptop.png)
+
+- [Desktop Wireframe](docs/wireframes/battle-armament-desktop.png)
 
 - Feedback Form Part 1 & 2
-  - [Feedback Form Part 1 Wireframe](docs/wireframes/form-feedback-part1.png)
-  - [Feedback Form Part 2 Wireframe](docs/wireframes/form-feedback-part2.png)
+  - [Feedback Form Part 1 Wireframe]
+  - [Feedback Form Part 2 Wireframe]
 
 #### **404 Error Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
@@ -209,14 +212,6 @@ Whether you’re a seasoned warrior or a curious newcomer, Vikode’s Saga for K
 - [Laptop Wireframe](docs/wireframes/404-laptop.png)
 
 - [Desktop Wireframe](docs/wireframes/404-desktop.png)
-
-#### **Under Construction Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
-
-- [Mobile, iPad Wireframes](docs/wireframes/under-construction-mobile-ipad.png)
-
-- [Laptop Wireframe](docs/wireframes/under-construction-laptop.png)
-
-- [Desktop Wireframe](docs/wireframes/under-construction-desktop.png)
 
 </details >
 
@@ -370,7 +365,7 @@ Planned or optional additions:
 - Visual Studio Code — Primary code editor for HTML, CSS, and JavaScript development
 - Git & GitHub — Version control and collaborative repository management
 - GitHub Projects — For tracking user stories, tasks, and progress
-- Figma (planned) — For wireframe design and UI prototyping
+- Balsamiq — For wireframe design
 - Google Fonts — For importing custom typefaces
 - Font Awesome — For scalable iconography
 - WAVE & Lighthouse — For accessibility and performance testing
