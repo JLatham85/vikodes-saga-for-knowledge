@@ -257,15 +257,15 @@ All the below where contrasted then selected for the different categories and wi
 
 | CSS Name      |   HEX   |       RGB        | Comment                                    |
 | ------------- | :-----: | :--------------: | ------------------------------------------ |
-| White     | #FFFFFF |  rgb(81 59 31)   | Background for forms and unhovered buttons |
-| Fire Brick   | #B22222 | rgb(219 211 173) | Foreground for forms and unhovered buttons |
-| Fire Brick | #B22222 |  rgb(81 49 37)   | Background for hovered buttons             |
-| White   | #FFFFFF | rgb(219 211 173) | Foreground for hovered buttons             |
-| Fire Brick        | #B22222 |  rgb(40 22 10)   | Background for Header and Footer           |
-| Gold   | #FFD700 | rgb(219 211 173) | Foreground for Header and Footer           |
-| White     | #FFFFFF | rgb(150 111 81)  | Highlight color in Header footer for links |
-| Eerie Black   | #1C1C1C | rgb(219 211 173) | Main page Background                       |
-| Gold        | #FFD700 |  rgb(40 22 10)   | Main font color for main pages             |
+| White     | #B22222 |  rgb(178 34 34)   | Background for forms and unhovered buttons |
+| Fire Brick   | #FFFFFF | rgb(255 255 255) | Foreground for forms and unhovered buttons |
+| Fire Brick | #FFFFFF |  rgb(255 255 255)   | Background for hovered buttons             |
+| White   | #B22222 | rgb(178 34 34) | Foreground for hovered buttons             |
+| Fire Brick        | #B22222 |  rgb(178 34 34)   | Background for Header and Footer           |
+| Gold   | #FFD700 | rgb(255 215 0) | Foreground for Header and Footer           |
+| White     | #FFFFFF | rgb(255 255 255)  | Highlight color in Header footer for links |
+| Eerie Black   | #1C1C1C | rgb(28 28 28) | Main page Background                       |
+| Gold        | #FFD700 |  rgb(255 215 0)   | Main font color for main pages             |
 
 #### **Images** <!--Insert any tools used to generate images and add which programme we used to render-->
 
