@@ -30,6 +30,23 @@ body{
     font-family: var(--retro-font);    
 }
 
+/* Modal Styles*/
+
+#introModal .modal-content {
+    background-color: var(--fire-brick);
+    color: var(--gold);
+    font-family: var(--body-text);
+}
+
+/* Button Styles */
+
+#introModal button {
+    background-color: var(--eerie-black);
+    color: var(--white);
+    font-family: var(--retro-font);
+    border: none;
+}
+
 /* Navbar Styles */
 
 .logo {
