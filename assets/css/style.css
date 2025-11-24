@@ -1,6 +1,4 @@
-<style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap');
-</style>
 
 /* CSS Variable Styles */
 
@@ -27,11 +25,18 @@ body{
 /* Navbar Styles */
 
 .logo {
-  width: 35px;
-  height: auto;
+    width: 35px;
+    height: auto;
 }
 
 #navigation {
   background-color: var(--fire-brick);
   color: var(--gold);
+}
+
+.navbar .nav-link {
+  font-family: var(--retro-font);  
+  color: var(--gold) !important;
+  font-size: small;
+  padding: 8px;
 }

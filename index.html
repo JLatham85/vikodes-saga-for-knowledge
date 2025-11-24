@@ -42,12 +42,53 @@
     <!-- Navbar-->
     <nav
       id="navigation"
-      class="navbar navbar-expand-lg fixed-top"
+      class="navbar navbar-expand-lg fixed-top py-0"
       data-bs-theme="dark"
-    ></nav>
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="assets/images/plain-logo-no-background.png"
+            alt="Hygge Mind Games Logo"
+            class="logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navigationcollapse"
+          aria-controls="navigationcollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigationcollapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#"> How to Play </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Flashcards </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Feedback </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <!-- Header-->
-    <header id="header" class="py-5 text-center"></header>
+    <header id="header" class="mb-7 py-5 text-center">
+      <div class="container">
+        <h1 class="display-4">Vikodes Saga for Knowledge</h1>
+        <p class="lead">
+          Embark on an epic quest where knowledge is your greatest weapon!
+        </p>
+      </div>
+    </header>
 
     <!-- Main Section-->
     <main id="main" class="flex-grow-1"></main>
