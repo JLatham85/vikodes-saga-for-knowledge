@@ -47,6 +47,21 @@ body{
     border: none;
 }
 
+#navigation-buttons button {
+    background-color: var(--fire-brick);
+    color: var(--gold);
+    font-family: var(--retro-font);
+    width: 100%;
+    border: none;
+}
+
+#navigation-buttons button:hover,
+#navigation-buttons button:focus {
+    background-color: var(--gold);
+    color: var(--fire-brick);
+    opacity: 0.8;
+}
+
 /* Navbar Styles */
 
 .logo {
