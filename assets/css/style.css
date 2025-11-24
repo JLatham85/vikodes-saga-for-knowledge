@@ -24,3 +24,14 @@ body{
     padding: 0;
 }
 
+/* Navbar Styles */
+
+.logo {
+  width: 35px;
+  height: auto;
+}
+
+#navigation {
+  background-color: var(--fire-brick);
+  color: var(--gold);
+}
