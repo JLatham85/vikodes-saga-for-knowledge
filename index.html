@@ -70,10 +70,27 @@
               <a class="nav-link" href="#"> How to Play </a>
             </li>
             <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#contactModal"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#"> Flashcards </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> Feedback </a>
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                Feedback
+              </a>
             </li>
           </ul>
         </div>
@@ -89,6 +106,26 @@
 
     <!-- Main Section-->
     <main id="main" class="flex-grow-1">
+      <!-- Navigation buttons will go here -->
+      <div id="navigation-buttons" class="container-fluid">
+        <button class="col-12 btn btn-primary mb-5">Start Saga</button>
+        <button class="col-12 btn btn-primary mb-5">How to Play</button>
+        <button class="col-12 btn btn-primary mb-5">Flashcards</button>
+        <button
+          class="col-12 btn btn-primary mb-5"
+          data-bs-toggle="modal"
+          data-bs-target="#contactModal"
+        >
+          Contact Us
+        </button>
+        <button
+          class="col-12 btn btn-primary mb-5"
+          data-bs-toggle="modal"
+          data-bs-target="#feedbackModal"
+        >
+          Feedback
+        </button>
+      </div>
       <!-- Vertically centered scrollable modal -->
       <div class="modal fade" id="introModal" tabindex="-1" aria-hidden="true">
         <div
@@ -100,8 +137,8 @@
                 ...So the <strong>SAGA</strong> begins...
               </h1>
             </div>
-            <div class="modal-body">
-              <p class="mb-0 justify-content-center text-center">
+            <div class="modal-body mb-0 justify-content-center text-center">
+              <p>
                 Across the seven seas, Vikodes longship has carved its path
                 through storm and steel. Gold has been taken, battlements have
                 fallen, and the echoes of conquest resound in distant halls. Yet
@@ -109,16 +146,19 @@
                 hunger within him. His Hugr — the spirit of thought and will —
                 does not crave dominion or crowns, but something rarer: the
                 quiet fire of understanding, the lasting weight of wisdom.
-                <hr />
-                For Vikode, raids are not measured in plunder but in
-                revelations. Each voyage is a quest not for power, but for the
-                fulfillment that comes when mysteries are unraveled and truths
-                are laid bare. The sagas of old spoke of warriors who sought
-                glory in battle; Vikodes saga is different. His battles are
-                fought against ignorance, his victories marked by clarity, and
-                his spoils are scrolls of knowledge carried home across the
-                waves. 
-                <hr />
+              </p>
+              <hr />
+              <p>
+                Vikode, raids are not measured in plunder but in revelations.
+                Each voyage is a quest not for power, but for the fulfillment
+                that comes when mysteries are unraveled and truths are laid
+                bare. The sagas of old spoke of warriors who sought glory in
+                battle; Vikodes saga is different. His battles are fought
+                against ignorance, his victories marked by clarity, and his
+                spoils are scrolls of knowledge carried home across the waves.
+              </p>
+              <hr />
+              <p>
                 Thus begins the Saga for Knowledge: a journey where every
                 question is a challenge, every answer a triumph, and every trial
                 a step closer to the horizon of understanding. The seas may
@@ -127,10 +167,11 @@
                 beyond gold and stone.
               </p>
             </div>
+
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-primary"
+                class="introModal btn btn-primary"
                 data-bs-dismiss="modal"
               >
                 Begin Adventure
@@ -139,13 +180,241 @@
           </div>
         </div>
       </div>
-      <!-- Navigation buttons will go here -->
-      <div id="navigation-buttons" class="container-fluid">
-        <button class="col-12 btn btn-primary mb-5">Start Saga</button>
-        <button class="col-12 btn btn-primary mb-5">How to Play</button>
-        <button class="col-12 btn btn-primary mb-5">Flashcards</button>
-        <button class="col-12 btn btn-primary mb-5">Contact Us</button>
-        <button class="col-12 btn btn-primary mb-5">Feedback</button>
+      <!-- Contact us Modal-->
+      <div
+        class="modal fade"
+        id="contactModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                Roar your message to Vikode and the Jarls!
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="contactForm" novalidate>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" class="form-control" required />
+                  <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    id="message"
+                    class="form-control"
+                    required
+                  ></textarea>
+                  <div class="invalid-feedback">Please enter your message.</div>
+                </div>
+                <button type="submit" class="submit-btn btn btn-primary">
+                  Raven Fly
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Feedback Modal -->
+      <div
+        class="modal fade"
+        id="feedbackModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Feedback</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="feedbackForm" novalidate>
+                <div class="mb-3">
+                  <label for="fullName" class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fullName"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter your full name.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="contactNo" class="form-label"
+                    >Contact Number</label
+                  >
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="contactNo"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter your contact number.
+                  </div>
+                </div>
+
+                <!-- Was navigating the game easy -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Was navigating the game easy?</label
+                  >
+                  <select class="form-select" required>
+                    <option value="">Choose...</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Somewhat</option>
+                  </select>
+                  <div class="invalid-feedback">Please select an option.</div>
+                </div>
+
+                <!-- Colour scheme -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Was the colour scheme appealing and comfortable?</label
+                  >
+                  <textarea class="form-control" rows="2" required></textarea>
+                  <div class="invalid-feedback">
+                    Please describe your experience.
+                  </div>
+                </div>
+
+                <!-- Unhelpful parts -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Were there parts of the website you didn't find
+                    helpful?</label
+                  >
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+
+                <!-- Faulty links -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Did you come across any faulty links?</label
+                  >
+                  <select class="form-select" required>
+                    <option value="">Choose...</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                  <div class="invalid-feedback">Please select an option.</div>
+                </div>
+
+                <!-- Features disliked -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Were there any features you did not like?</label
+                  >
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+
+                <!-- Experience with features -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Describe your experience with the features</label
+                  >
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+
+                <!-- Text clarity -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Were the text elements clear and readable?</label
+                  >
+                  <select class="form-select" required>
+                    <option value="">Choose...</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Somewhat</option>
+                  </select>
+                  <div class="invalid-feedback">Please select an option.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Describe your experience with text clarity</label
+                  >
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+
+                <!-- Accessibility -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Are there any accessibility problems (e.g. contrast, font
+                    size)?</label
+                  >
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+
+                <!-- Overall rating -->
+                <div class="mb-3">
+                  <label class="form-label"
+                    >How would you rate the overall website?</label
+                  >
+                  <select class="form-select" required>
+                    <option value="">Choose...</option>
+                    <option>Excellent</option>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a rating.</div>
+                </div>
+
+                <!-- Suggestions -->
+                <div class="mb-3">
+                  <label class="form-label">Any Suggestions?</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary">
+                  Submit Feedback
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 

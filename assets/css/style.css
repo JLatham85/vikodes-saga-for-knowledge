@@ -32,7 +32,7 @@ body{
 
 /* Modal Styles*/
 
-#introModal .modal-content {
+.modal-content {
     background-color: var(--fire-brick);
     color: var(--gold);
     font-family: var(--body-text);
@@ -40,14 +40,14 @@ body{
 
 /* Button Styles */
 
-#introModal button {
+.introModal {
     background-color: var(--eerie-black);
     color: var(--white);
     font-family: var(--retro-font);
     border: none;
 }
 
-#navigation-buttons button {
+.btn {
     background-color: var(--fire-brick);
     color: var(--gold);
     font-family: var(--retro-font);
@@ -55,10 +55,38 @@ body{
     border: none;
 }
 
-#navigation-buttons button:hover,
-#navigation-buttons button:focus {
+.btn:hover,
+.btn:focus {
     background-color: var(--gold);
     color: var(--fire-brick);
+    opacity: 0.8;
+}
+
+.contact-btn {
+    background-color: var(--eerie-black);
+    color: var(--white);
+    font-family: var(--retro-font);
+    border: none;
+}
+
+.contact-btn:hover,
+.contact-btn:focus {
+    background-color: var(--white);
+    color: var(--eerie-black);
+    opacity: 0.8;
+}
+
+.submit-btn {
+    background-color: var(--gold);
+    color: var(--fire-brick);
+    font-family: var(--retro-font);
+    border: none;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+    background-color: var(--white);
+    color: var(--eerie-black);
     opacity: 0.8;
 }
 
