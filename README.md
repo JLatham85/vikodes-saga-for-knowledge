@@ -252,10 +252,10 @@ All the below where contrasted then selected for the different categories and wi
 
 | CSS Name      |   HEX   |       RGB        | Comment                                    |
 | ------------- | :-----: | :--------------: | ------------------------------------------ |
-| White     | #B22222 |  rgb(178 34 34)   | Background for forms and unhovered buttons |
-| Fire Brick   | #FFFFFF | rgb(255 255 255) | Foreground for forms and unhovered buttons |
-| Fire Brick | #FFFFFF |  rgb(255 255 255)   | Background for hovered buttons             |
-| White   | #B22222 | rgb(178 34 34) | Foreground for hovered buttons             |
+| Fire Brick     | #B22222 |  rgb(178 34 34)   | Background for forms and unhovered buttons |
+| White   | #FFFFFF | rgb(255 255 255) | Foreground for forms and unhovered buttons |
+| White | #FFFFFF |  rgb(255 255 255)   | Background for hovered buttons             |
+| Fire Brick   | #B22222 | rgb(178 34 34) | Foreground for hovered buttons             |
 | Fire Brick        | #B22222 |  rgb(178 34 34)   | Background for Header and Footer           |
 | Gold   | #FFD700 | rgb(255 215 0) | Foreground for Header and Footer           |
 | White     | #FFFFFF | rgb(255 255 255)  | Highlight color in Header footer for links |
