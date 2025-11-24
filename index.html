@@ -80,7 +80,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> Flashcards </a>
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#flashcardsModal"
+              >
+                Flashcards
+              </a>
             </li>
             <li class="nav-item">
               <a
@@ -110,7 +117,13 @@
       <div id="navigation-buttons" class="container-fluid">
         <button class="col-12 btn btn-primary mb-5">Start Saga</button>
         <button class="col-12 btn btn-primary mb-5">How to Play</button>
-        <button class="col-12 btn btn-primary mb-5">Flashcards</button>
+        <button
+          class="col-12 btn btn-primary mb-5"
+          data-bs-toggle="modal"
+          data-bs-target="#flashcardsModal"
+        >
+          Flashcards
+        </button>
         <button
           class="col-12 btn btn-primary mb-5"
           data-bs-toggle="modal"
@@ -412,6 +425,30 @@
                   Submit Feedback
                 </button>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flashcards Modal -->
+      <div
+        class="modal fade"
+        id="flashcardsModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Flashcards Monastery</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Flashcards will be dynamically added here -->
+              <div id="flashcardList"></div>
             </div>
           </div>
         </div>

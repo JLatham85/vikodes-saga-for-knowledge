@@ -59,3 +59,78 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// -----------------------------
+// Session Only Flashcard Array Storage
+// -----------------------------
+let flashcards = []; 
+// This array is your "library chest" — it holds all flashcards created during the session.
+// It must be declared at the very top so ALL functions can access it.
+
+// -----------------------------
+// Fetch Recommended Link Function
+// -----------------------------
+async function fetchRecommendedLink(query) {
+  // This function goes here, BEFORE addToFlashcards,
+  // because addToFlashcards CALLS it. If it were below,
+  // you'd risk "undefined function" errors.
+  try {
+    const response = await fetch(
+      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`
+    );
+    const data = await response.json();
+
+    if (data.query.search.length > 0) {
+      const title = data.query.search[0].title;
+      return `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Link fetch failed:", error);
+    return null;
+  }
+}
+
+
+// Add a flashcard in array session storage only 
+// -----------------------------
+function addToFlashcards(question, correctAnswer, userAnswer) {
+  fetchRecommendedLink(question).then(link => {
+    flashcards.push({ question, correctAnswer, userAnswer, link });
+    renderFlashcards(); // Only render AFTER the link is ready
+  });
+}
+
+// Render flashcards in the modal template
+
+function renderFlashcards() {
+  const list = document.getElementById("flashcardList");
+  list.innerHTML = "";
+
+  flashcards.forEach((card, index) => {
+    const item = document.createElement("div");
+    item.className = "card mb-2";
+    item.innerHTML = `
+      <div class="card-body">
+        <p><strong>Q:</strong> ${card.question}</p>
+        <p><strong>Your Answer:</strong> ${card.userAnswer}</p>
+        <p><strong>Correct Answer:</strong> ${card.correctAnswer}</p>
+        ${card.link ? `<p><a href="${card.link}" target="_blank">Learn more</a></p>` : ""}
+        <button class="btn btn-danger btn-sm" onclick="deleteFlashcard(${index})">Delete</button>
+      </div>`;
+    list.appendChild(item);
+  });
+}
+
+// Delete a flashcard option
+
+function deleteFlashcard(index) {
+  // This function can safely sit at the bottom,
+  // because it's only called from inside renderFlashcards.
+  flashcards.splice(index, 1);
+  renderFlashcards();
+}
+
+
+
