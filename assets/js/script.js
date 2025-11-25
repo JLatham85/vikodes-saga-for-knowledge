@@ -147,9 +147,63 @@ async function startQuiz() {
   const difficulty = document.getElementById("quizDifficulty").value;
 
   const questions = await fetchQuizQuestions(category, difficulty, 5);
-  renderQuiz(questions); // reuses the renderQuiz logic, but now passes in the array
+  renderQuiz(questions); // call the next function
 }
 
+// Render quiz (separate function, defined AFTER startQuiz)
+function renderQuiz(questions) {
+  const quizContainer = document.getElementById("quizContainer");
+  quizContainer.innerHTML = "";
 
+  let currentIndex = 0;
+
+  function showQuestion(index) {
+    const q = questions[index];
+    quizContainer.innerHTML = `
+      <h3>${q.question}</h3>
+      <div id="quizOptions"></div>
+      <div id="quizFeedback"></div>
+    `;
+
+    const options = [...q.incorrect_answers, q.correct_answer];
+    options.sort(() => Math.random() - 0.5);
+
+    const quizOptions = document.getElementById("quizOptions");
+    options.forEach(option => {
+      const btn = document.createElement("button");
+      btn.className = "btn btn-outline-primary m-2";
+      btn.textContent = option;
+
+      btn.onclick = () => {
+        const feedback = document.getElementById("quizFeedback");
+        if (option === q.correct_answer) {
+          feedback.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
+        } else {
+          feedback.innerHTML = `
+            <div class="alert alert-danger">Wrong! ❌</div>
+            <button class="btn btn-warning btn-sm mt-2"
+              onclick="addToFlashcards('${q.question}', '${q.correct_answer}', '${option}')">
+              Add to Flashcards
+            </button>
+          `;
+        }
+
+        // Move to next question
+        setTimeout(() => {
+          currentIndex++;
+          if (currentIndex < questions.length) {
+            showQuestion(currentIndex);
+          } else {
+            quizContainer.innerHTML = `<div class="alert alert-info">Raid complete! 🪓🏹</div>`;
+          }
+        }, 1500);
+      };
+
+      quizOptions.appendChild(btn);
+    });
+  }
+
+  showQuestion(currentIndex);
+}
 
 
