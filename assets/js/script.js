@@ -60,21 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// -----------------------------
-// Session Only Flashcard Array Storage
-// -----------------------------
-let flashcards = []; 
-// This array is your "library chest" — it holds all flashcards created during the session.
-// It must be declared at the very top so ALL functions can access it.
 
-// -----------------------------
+// Session Only Flashcard Array Storage
+
+let flashcards = []; 
+// This array is the "library chest" — it holds all flashcards created during the session.
+
+
+
 // Fetch Recommended Link Function
-// -----------------------------
+
 async function fetchRecommendedLink(query) {
-  // This function goes here, BEFORE addToFlashcards,
-  // because addToFlashcards CALLS it. If it were below,
-  // you'd risk "undefined function" errors.
-  try {
+   try {
     const response = await fetch(
       `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`
     );
@@ -94,7 +91,7 @@ async function fetchRecommendedLink(query) {
 
 
 // Add a flashcard in array session storage only 
-// -----------------------------
+
 function addToFlashcards(question, correctAnswer, userAnswer) {
   fetchRecommendedLink(question).then(link => {
     flashcards.push({ question, correctAnswer, userAnswer, link });
@@ -126,11 +123,33 @@ function renderFlashcards() {
 // Delete a flashcard option
 
 function deleteFlashcard(index) {
-  // This function can safely sit at the bottom,
-  // because it's only called from inside renderFlashcards.
   flashcards.splice(index, 1);
   renderFlashcards();
 }
+
+// Fetch quiz questions based on chosen category and difficulty from OpenTDB
+async function fetchQuizQuestions(category, difficulty, amount = 10) {
+  try {
+    const response = await fetch(
+      `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Quiz fetch failed:", error);
+    return [];
+  }
+}
+
+// Start quiz after choices
+async function startQuiz() {
+  const category = document.getElementById("quizCategory").value;
+  const difficulty = document.getElementById("quizDifficulty").value;
+
+  const questions = await fetchQuizQuestions(category, difficulty, 5);
+  renderQuiz(questions); // reuses the renderQuiz logic, but now passes in the array
+}
+
 
 
 

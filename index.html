@@ -115,7 +115,13 @@
     <main id="main" class="flex-grow-1">
       <!-- Navigation buttons will go here -->
       <div id="navigation-buttons" class="container-fluid">
-        <button class="col-12 btn btn-primary mb-5">Start Saga</button>
+        <button
+          class="col-12 btn btn-primary mb-5"
+          data-bs-toggle="modal"
+          data-bs-target="#quizChoiceModal"
+        >
+          Start Saga
+        </button>
         <button class="col-12 btn btn-primary mb-5">How to Play</button>
         <button
           class="col-12 btn btn-primary mb-5"
@@ -449,6 +455,57 @@
             <div class="modal-body">
               <!-- Flashcards will be dynamically added here -->
               <div id="flashcardList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quiz choice modal-->
+      <div
+        class="modal fade"
+        id="quizChoiceModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Knowledge Finder</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Topic Selection -->
+              <div class="mb-3">
+                <label for="quizCategory" class="form-label"
+                  >Choose Topic</label
+                >
+                <select id="quizCategory" class="form-select">
+                  <option value="9">General Knowledge</option>
+                  <option value="18">Science: Computers</option>
+                  <option value="19">Mathematics</option>
+                  <option value="23">History</option>
+                  <!-- Add more categories from Open Trivia DB remeber to get the value -->
+                </select>
+              </div>
+
+              <!-- Difficulty Selection -->
+              <div class="mb-3">
+                <label for="quizDifficulty" class="form-label"
+                  >Choose Difficulty</label
+                >
+                <select id="quizDifficulty" class="form-select">
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" onclick="startQuiz()">
+                Start Quiz
+              </button>
             </div>
           </div>
         </div>
