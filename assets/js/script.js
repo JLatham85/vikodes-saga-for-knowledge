@@ -1,8 +1,8 @@
 // Trigger intro modal on page load
-/**document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
   var introModal = new bootstrap.Modal(document.getElementById('introModal'));
   introModal.show();
-});**/
+});
 
 // Custom error message and validation for contact form
 document.addEventListener("DOMContentLoaded", function () {
