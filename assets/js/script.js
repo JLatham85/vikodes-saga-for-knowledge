@@ -158,6 +158,29 @@ function renderHearts() {
   }
 }
 
+// Handle answer and update lives
+
+function handleAnswer(isCorrect) {
+  if (isCorrect) {
+    enemyLives--;
+  } else {
+    heroLives--;
+  }
+  renderHearts();
+  checkBattleEnd();
+}
+
+function checkBattleEnd() {
+  if (heroLives <= 0) {
+    document.getElementById("quizContainer").innerHTML =
+      `<div class="alert alert-danger">Hero defeated! 💀</div>`;
+  } else if (enemyLives <= 0) {
+    document.getElementById("quizContainer").innerHTML =
+      `<div class="alert alert-success">Enemy defeated! 🏆</div>`;
+  }
+}
+
+
 // Fetch quiz questions based on chosen category and difficulty from OpenTDB
 async function fetchQuizQuestions(category, difficulty, amount = 10) {
   try {
@@ -177,7 +200,7 @@ async function startQuiz() {
   const category = document.getElementById("quizCategory").value;
   const difficulty = document.getElementById("quizDifficulty").value;
 
-  const questions = await fetchQuizQuestions(category, difficulty, 5);
+  const questions = await fetchQuizQuestions(category, difficulty);
   renderQuiz(questions); // call the next function
 }
 
@@ -208,27 +231,32 @@ function renderQuiz(questions) {
       btn.onclick = () => {
         const feedback = document.getElementById("quizFeedback");
         if (option === q.correct_answer) {
-          feedback.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
+          quizFeedback.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
+          handleAnswer(true);
         } else {
-          feedback.innerHTML = `
-            <div class="alert alert-danger">Wrong! ❌</div>
-            <button class="btn btn-warning btn-sm mt-2"
-              onclick="addToFlashcards('${q.question}', '${q.correct_answer}', '${option}')">
-              Add to Flashcards
-            </button>
-          `;
+            quizFeedback.innerHTML = `<div class="alert alert-danger">Wrong! ❌</div>
+            <button id="addFlashcardBtn" class="btn btn-warning btn-sm mt-2">Add to Flashcards</button>`;
+            handleAnswer(false);
+
+            // add to flashcards
+            document.getElementById("addFlashcardBtn").onclick = () => {
+                flashcards.push(q);
+                renderFlashcards();
+            };
         }
 
-        // Move to next question
-        setTimeout(() => {
-          currentIndex++;
-          if (currentIndex < questions.length) {
-            showQuestion(currentIndex);
-          } else {
-            quizContainer.innerHTML = `<div class="alert alert-info">Raid complete! 🪓🏹</div>`;
-          }
-        }, 1500);
-      };
+        // always show Next Question button
+        quizFeedback.innerHTML += `<button id="nextBtn" class="btn btn-primary mt-2">Next Question</button>`;
+        document.getElementById("nextBtn").onclick = () => {
+            currentIndex++;
+            if (currentIndex < flashcards.length) {
+                showQuestion(flashcards[currentIndex]);
+            } else {
+              quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
+            }
+        };
+    };
+
 
       quizOptions.appendChild(btn);
     });
