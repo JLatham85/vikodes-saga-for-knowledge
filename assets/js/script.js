@@ -1,10 +1,21 @@
+// All game state variables at top of script for ease of viewing
+
+let flashcards = [];
+let currentIndex = 0;
+let heroLives = 10;
+let enemyLives = 10;
+let selectedCatergory = null;
+
+
 // Trigger intro modal on page load
+
 document.addEventListener("DOMContentLoaded", function() {
   var introModal = new bootstrap.Modal(document.getElementById('introModal'));
   introModal.show();
 });
 
 // Custom error message and validation for contact form
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
 
@@ -28,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Custom error message and validation for feedback form
+
 document.addEventListener("DOMContentLoaded", function () {
   const feedbackForm = document.getElementById("feedbackForm");
 
@@ -59,14 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-
-// Session Only Flashcard Array Storage
-
-let flashcards = []; 
-// This array is the "library chest" — it holds all flashcards created during the session.
-
-
 
 // Fetch Recommended Link Function
 
@@ -125,6 +129,33 @@ function renderFlashcards() {
 function deleteFlashcard(index) {
   flashcards.splice(index, 1);
   renderFlashcards();
+}
+
+// Heart Rendering Function
+function renderHearts() {
+  const heroHearts = document.getElementById("hero-hearts");
+  const enemyHearts = document.getElementById("enemy-hearts");
+
+  heroHearts.innerHTML = "";
+  enemyHearts.innerHTML = "";
+
+  // Hero hearts
+  for (let i = 0; i < 10; i++) {
+    if (i < heroLives) {
+      heroHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
+    } else {
+      heroHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
+    }
+  }
+
+  // Enemy hearts
+  for (let i = 0; i < 10; i++) {
+    if (i < enemyLives) {
+      enemyHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
+    } else {
+      enemyHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
+    }
+  }
 }
 
 // Fetch quiz questions based on chosen category and difficulty from OpenTDB

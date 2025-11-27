@@ -90,6 +90,33 @@ body{
     opacity: 0.8;
 }
 
+/* Arena Layout */ 
+
+#arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background: var(--eerie-black);
+  position: relative;
+}
+
+#hero-area, #enemy-area {
+  text-align: center;
+}
+
+#hero, #enemy {
+  max-width: 200px;
+  height: auto;
+}
+
+.hearts img {
+  width: 25px;
+  margin: 0 2px;
+}
+
+
 /* Navbar Styles */
 
 .logo {
@@ -122,3 +149,22 @@ body{
   color: var(--gold);
   font-size: xx-small;
 }
+
+/* Media queries section */
+
+/* Small Breakpoint (upto 768px) */
+@media (max-width: 768px) {
+  #arena {
+    height: auto;
+    padding: 10px;
+  }
+
+  #hero, #enemy {
+    max-width: 120px;
+  }
+
+  .hearts img {
+    width: 18px;
+  }
+}
+
