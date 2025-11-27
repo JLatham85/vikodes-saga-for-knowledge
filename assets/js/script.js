@@ -208,61 +208,66 @@ async function startQuiz() {
 function renderQuiz(questions) {
   const quizContainer = document.getElementById("quizContainer");
   quizContainer.innerHTML = "";
+  currentIndex = 0; // reset global index at start
 
-  let currentIndex = 0;
-
-  function showQuestion(index) {
-    const q = questions[index];
+  function showQuestion(q) {
     quizContainer.innerHTML = `
-      <h3>${q.question}</h3>
-      <div id="quizOptions"></div>
-      <div id="quizFeedback"></div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">${q.question}</h5>
+          <div id="quizOptions"></div>
+          <div id="quizFeedback" class="mt-3"></div>
+        </div>
+      </div>
     `;
 
-    const options = [...q.incorrect_answers, q.correct_answer];
-    options.sort(() => Math.random() - 0.5);
-
     const quizOptions = document.getElementById("quizOptions");
+    const options = [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5);
+
     options.forEach(option => {
       const btn = document.createElement("button");
-      btn.className = "btn btn-outline-primary m-2";
+      btn.className = "btn btn-outline-primary m-1";
       btn.textContent = option;
 
       btn.onclick = () => {
-        const feedback = document.getElementById("quizFeedback");
+        const quizFeedback = document.getElementById("quizFeedback");
+
         if (option === q.correct_answer) {
           quizFeedback.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
           handleAnswer(true);
         } else {
-            quizFeedback.innerHTML = `<div class="alert alert-danger">Wrong! ❌</div>
-            <button id="addFlashcardBtn" class="btn btn-warning btn-sm mt-2">Add to Flashcards</button>`;
-            handleAnswer(false);
+          quizFeedback.innerHTML = `
+            <div class="alert alert-danger">Wrong! ❌</div>
+            <button id="addFlashcardBtn" class="btn btn-warning">Add to Flashcards</button>
+          `;
+          handleAnswer(false);
 
-            // add to flashcards
-            document.getElementById("addFlashcardBtn").onclick = () => {
-                flashcards.push(q);
-                renderFlashcards();
-            };
+          // wire up add to flashcards
+          document.getElementById("addFlashcardBtn").onclick = () => {
+            flashcards.push(q);
+            renderFlashcards();
+          };
         }
 
         // always show Next Question button
         quizFeedback.innerHTML += `<button id="nextBtn" class="btn btn-primary mt-2">Next Question</button>`;
         document.getElementById("nextBtn").onclick = () => {
-            currentIndex++;
-            if (currentIndex < flashcards.length) {
-                showQuestion(flashcards[currentIndex]);
-            } else {
-              quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
-            }
+          currentIndex++;
+          if (currentIndex < questions.length) {
+            showQuestion(questions[currentIndex]);
+          } else {
+            quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
+          }
         };
-    };
-
+      };
 
       quizOptions.appendChild(btn);
     });
   }
 
-  showQuestion(currentIndex);
+  // show the first question
+  showQuestion(questions[currentIndex]);
 }
+
 
 
