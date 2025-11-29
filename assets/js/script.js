@@ -1,9 +1,10 @@
 /* ===========================
-   STATE VARIABLES
+   VARIABLES
    =========================== */
 
-// All game state variables at top of script for ease of viewing
+// All game variables at top of script for ease of viewing
 
+let quizQuestions = [];
 let flashcards = [];
 let currentIndex = 0;
 let heroLives = 10;
@@ -293,7 +294,9 @@ async function startQuiz(categoryKey, difficulty) {
   quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
 
   // Show first question
-  showQuestion();
+  function showQuestion() {
+    const questionObj = quizQuestions[currentIndex];
+  };
 }
 
 /* ===========================
@@ -307,9 +310,20 @@ document.addEventListener("DOMContentLoaded", function() {
   introModal.show();
 });
 
-    // attach event listeners to Start Quiz button, category/difficulty selectors
-    
-    // initialize arena container, reset lives, clear flashcards
+// Start quiz button event listener
+document.addEventListener("DOMContentLoaded", () => {
+  const startBtn = document.getElementById("startQuiz");
+  const categorySelect = document.getElementById("quizCategory");
+  const difficultySelect = document.getElementById("quizDifficulty");
+
+  startBtn.addEventListener("click", async () => {
+    const categoryKey = categorySelect.value;     
+    const difficulty = difficultySelect.value;    
+
+    // Call Saga start
+    await startQuiz(categoryKey, difficulty);
+  });
+});
 
 /* ===========================
    FORM VALIDATION FUNCTIONS
