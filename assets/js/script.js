@@ -72,37 +72,45 @@ function renderImage(path, altText) {
 /* ===========================
    START SAGA FUNCTIONS
    =========================== */
-// Wire button to initQuiz 
+
+// Wire button to initQuiz
 document.getElementById("startSagaBtn").onclick = () => {
-  initQuiz(selectedCategory, selectedDifficulty);
+  const selectedCategoryId = document.getElementById("quizCategory").value;
+  const selectedDifficulty = document.getElementById("quizDifficulty").value;
+  initQuiz(selectedCategoryId, selectedDifficulty);
 };
 
-// Fetch first
-async function initQuiz(categoryKey, difficulty) {
-  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
+// Fetch first using OpenTDB category ID
+async function initQuiz(categoryId, difficulty) {
+  const res = await fetch(
+    `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`
+  );
+  const data = await res.json();
+  quizQuestions = data.results || [];
 
-  // Debug check: confirm questions loaded
-  console.log("Fetched Questions:", quizQuestions.length);
-  console.log("First Question Object:", quizQuestions[0]);
+  if (quizQuestions.length === 0) {
+    console.error("No quiz questions returned from API!");
+    return;
+  }
 
-  startSaga(categoryKey, difficulty);
+  const categoryName = quizQuestions[0].category;
+  startSaga(categoryName, difficulty);
 }
 
 // Start Saga function
 function startSaga(categoryName, difficulty) {
-  // Reset state for a fresh battle
-  heroLives = 10;
-  enemyLives = 10;
-  currentIndex = 0;
-
-  // Convert external category name to internal key
   const internalKey = categoryMap[categoryName];
   if (!internalKey) {
     console.error("No mapping found for category:", categoryName);
     return;
   }
 
-  // Render arena using chosen category + difficulty
+  // Reset state for a fresh battle
+  heroLives = 10;
+  enemyLives = 10;
+  currentIndex = 0;
+
+  // Render arena using internal key + difficulty
   renderArena(internalKey, difficulty);
 
   // Show hearts at full strength
@@ -115,8 +123,7 @@ function startSaga(categoryName, difficulty) {
     console.error("No quiz questions available!");
   }
 }
-
-      
+     
 /* ===========================
    BATTLE FUNCTIONS
    =========================== */
@@ -349,8 +356,8 @@ const openTdbCategoryIds = {
 };
 
 // Fetch quiz questions from OpenTDB
-async function fetchQuizQuestions(categoryKey, difficulty, amount = 10) {
-  const categoryId = openTdbCategoryIds[categoryKey];
+async function fetchQuizQuestions(categoryName, difficulty, amount = 10) {
+  const categoryId = openTdbCategoryIds[categoryName];
   const apiDifficulty = mapDifficulty(difficulty);
 
   try {
