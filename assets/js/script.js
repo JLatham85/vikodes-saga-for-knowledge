@@ -89,14 +89,21 @@ async function initQuiz(categoryKey, difficulty) {
 }
 
 // Start Saga function
-function startSaga(categoryKey, difficulty) {
+function startSaga(categoryName, difficulty) {
   // Reset state for a fresh battle
   heroLives = 10;
   enemyLives = 10;
   currentIndex = 0;
 
+  // Convert external category name to internal key
+  const internalKey = categoryMap[categoryName];
+  if (!internalKey) {
+    console.error("No mapping found for category:", categoryName);
+    return;
+  }
+
   // Render arena using chosen category + difficulty
-  renderArena(categoryKey, difficulty);
+  renderArena(internalKey, difficulty);
 
   // Show hearts at full strength
   renderHearts();
@@ -108,6 +115,7 @@ function startSaga(categoryKey, difficulty) {
     console.error("No quiz questions available!");
   }
 }
+
       
 /* ===========================
    BATTLE FUNCTIONS
@@ -357,31 +365,59 @@ async function fetchQuizQuestions(categoryKey, difficulty, amount = 10) {
   }
 }
 
+/* ===========================
+   NAME MAPPING
+   =========================== */
+
+// Bridge between OpenTDB names and our internal keys)
+const categoryMap = {
+  "General Knowledge": "generalKnowledge",
+  "Science: Computers": "scienceComputers",
+  "Mathematics": "mathematics",
+  "History": "history"
+};
+
  /* ===========================
    PAGE LOAD FUNCTIONS
    =========================== */
 
 // Trigger intro modal on page load
 
+// PAGE LOAD FUNCTIONS (testing version delete after testing)
 document.addEventListener("DOMContentLoaded", function() {
-  // Check if the intro modal has already been shown before
+  document.addEventListener("click", function handler() {
+    var introModalEl = document.getElementById("introModal");
+    var introModal = new bootstrap.Modal(introModalEl);
+
+    introModal.show();
+
+    // Wait until modal is fully open before moving focus
+    introModalEl.addEventListener("shown.bs.modal", function () {
+      // Safe to move focus now
+      introModalEl.querySelector(".btn-primary").focus();
+    }, { once: true });
+
+    document.removeEventListener("click", handler);
+  }, { once: true });
+});
+
+
+/** document.addEventListener("DOMContentLoaded", function() {
   if (!localStorage.getItem("introModalShown")) {
-    // Add a one-time click listener for first interaction
     document.addEventListener("click", function handler() {
       var introModalEl = document.getElementById("introModal");
       var introModal = new bootstrap.Modal(introModalEl);
-
       introModal.show();
 
-      // Mark as shown so it won't appear again on future visits
-      localStorage.setItem("introModalShown", "true");
+      introModalEl.addEventListener("shown.bs.modal", function () {
+        introModalEl.querySelector(".btn-primary").focus();
+      });
 
-      // Remove the click listener so it only triggers once
+      localStorage.setItem("introModalShown", "true");
       document.removeEventListener("click", handler);
     }, { once: true });
   }
-});
-
+}); **/
 
 /* ===========================
    FORM VALIDATION FUNCTIONS
