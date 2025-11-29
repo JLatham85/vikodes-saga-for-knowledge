@@ -348,7 +348,7 @@ async function fetchQuizQuestions(categoryKey, difficulty, amount = 10) {
 }
 
 // Start quiz after choices
-async function startQuiz(categoryKey, difficulty) {
+async function startSaga(categoryKey, difficulty) {
   // Reset state
   heroLives = 10;
   enemyLives = 10;
@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Start quiz button event listener
 document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("startQuiz");
+  const startBtn = document.getElementById("startSagaBtn");
   const categorySelect = document.getElementById("quizCategory");
   const difficultySelect = document.getElementById("quizDifficulty");
 
@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const difficulty = difficultySelect.value;    
 
     // Call Saga start
-    await startQuiz(categoryKey, difficulty);
+    await startSaga(categoryKey, difficulty);
   });
 });
 
