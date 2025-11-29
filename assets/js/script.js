@@ -150,21 +150,19 @@ function handleAnswer(isCorrect) {
   if (isCorrect) {
     // Correct: enemy loses a life
     enemyLives--;
-    quizFeedback.innerHTML += `<div class="alert alert-success">The enemy staggers! ⚔️</div>`;
   } else {
     // Wrong: hero loses a life
     heroLives--;
-    quizFeedback.innerHTML += `<div class="alert alert-danger">The hero is wounded! ❌</div>`;
   }
 
+  // Update visuals
   renderHearts();
 
   // Check if battle has ended
   checkBattleEnd();
 }
- 
-// Check battle end conditions
 
+// Check battle end conditions
 function checkBattleEnd() {
   if (heroLives <= 0) {
     quizFeedback.innerHTML = `
@@ -193,7 +191,6 @@ function checkBattleEnd() {
     return;
   }
 }
-
 
 /* ===========================
    FLASHCARD FUNCTIONS
@@ -294,20 +291,22 @@ function showQuestion(q) {
         }
       }
 
-      // Show Next Question button
-      const nextBtn = document.createElement("button");
-      nextBtn.id = "nextBtn";
-      nextBtn.className = "btn btn-primary mt-2";
-      nextBtn.textContent = "Next Question";
-      nextBtn.onclick = () => {
-        currentIndex++;
-        if (currentIndex < quizQuestions.length) {
-          showQuestion(quizQuestions[currentIndex]);
-        } else {
-          quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
-        }
-      };
-      quizFeedback.appendChild(nextBtn);
+      // Show Next Question button (only once per question)
+      if (!document.getElementById("nextBtn")) {
+        const nextBtn = document.createElement("button");
+        nextBtn.id = "nextBtn";
+        nextBtn.className = "btn btn-primary mt-2";
+        nextBtn.textContent = "Next Question";
+        nextBtn.onclick = () => {
+          currentIndex++;
+          if (currentIndex < quizQuestions.length) {
+            showQuestion(quizQuestions[currentIndex]);
+          } else {
+            quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
+          }
+        };
+        quizFeedback.appendChild(nextBtn);
+      }
     };
 
     quizOptions.appendChild(btn);
@@ -355,6 +354,7 @@ async function startQuiz(categoryKey, difficulty) {
   enemyLives = 10;
   flashcards = [];
   currentIndex = 0;
+}
 
   // Render Arena before fetching questions
   renderArena(categoryKey, difficulty);
@@ -473,5 +473,3 @@ async function fetchRecommendedLink(query) {
     return null;
   }
 }
-
-
