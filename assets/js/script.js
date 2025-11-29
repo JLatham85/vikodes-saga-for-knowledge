@@ -1,5 +1,5 @@
 /* ===========================
-   VARIABLES
+   VARIABLES AND CONSTANTS
    =========================== */
 
 // All game variables at top of script for ease of viewing
@@ -9,11 +9,20 @@ let flashcards = [];
 let currentIndex = 0;
 let heroLives = 10;
 let enemyLives = 10;
-let selectedCatergory = null;
+let selectedCategory = null;
 let selectedDifficulty = null;
 let heroMeeple = "";
 let enemyMeeple = "";
 let landscapeMeeple = "";
+
+// Link to HTML containers
+
+const arena = document.getElementById("arena");
+const quizContainer = document.getElementById("quizContainer");
+const heroHearts = document.getElementById("hero-hearts");
+const enemyHearts = document.getElementById("enemy-hearts");
+const quizFeedback = document.getElementById("quizFeedback");
+
 
 /* ===========================
    ARENA MAPPING
@@ -114,12 +123,10 @@ function renderArena(category, difficulty) {
 // Render Hearts Function
 
 function renderHearts() {
-  const heroHearts = document.getElementById("hero-hearts");
-  const enemyHearts = document.getElementById("enemy-hearts");
-
+  // Clear existing hearts
   heroHearts.innerHTML = "";
   enemyHearts.innerHTML = "";
-
+  
   // Hero hearts
   for (let i = 0; i < 10; i++) {
     if (i < heroLives) {
@@ -244,8 +251,6 @@ function showQuestion(q) {
     btn.textContent = decodeHtml(option);
 
     btn.onclick = () => {
-      const quizFeedback = document.getElementById("quizFeedback");
-
       if (option === q.correct_answer) {
         quizFeedback.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
         handleAnswer(true);
@@ -271,21 +276,22 @@ function showQuestion(q) {
         }
       }
 
-      // Next Question button
-      quizFeedback.innerHTML += `<button id="nextBtn" class="btn btn-primary mt-2">Next Question</button>`;
-      document.getElementById("nextBtn").onclick = () => {
+    // Next Question button
+    const nextBtn = document.createElement("button");
+    nextBtn.id = "nextBtn";
+    nextBtn.className = "btn btn-primary mt-2";
+    nextBtn.textContent = "Next Question";
+    nextBtn.onclick = () => {
         currentIndex++;
         if (currentIndex < quizQuestions.length) {
-          showQuestion(quizQuestions[currentIndex]);
+            showQuestion(quizQuestions[currentIndex]);
         } else {
-          quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
+            quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
         }
-      };
     };
+    quizFeedback.appendChild(nextBtn);
+};
 
-    quizOptions.appendChild(btn);
-  });
-}
 
 // show the first question
   showQuestion(quizQuestions[currentIndex]);
