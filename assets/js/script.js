@@ -52,6 +52,35 @@ const arenaAssets = {
 };
 
 /* ===========================
+   START SAGA FUNCTIONS
+   =========================== */
+
+function startSaga() {
+  // Reset state for a fresh battle
+  heroLives = 10;
+  enemyLives = 10;
+  currentIndex = 0;
+
+  // Render arena using chosen category + difficulty
+  renderArena(selectedCategory, selectedDifficulty);
+
+  // Show hearts at full strength
+  renderHearts();
+
+  // Load the first question
+  if (quizQuestions && quizQuestions.length > 0) {
+    showQuestion(quizQuestions[currentIndex]);
+  } else {
+    console.error("No quiz questions available!");
+  }
+}
+
+// Wire the Start Saga button
+document.getElementById("startSagaBtn").onclick = () => {
+  startSaga();
+};
+      
+/* ===========================
    BATTLE FUNCTIONS
    =========================== */
    
@@ -259,7 +288,7 @@ function showQuestion(q) {
 }
 
 // show the first question
-  showQuestion(questions[currentIndex]);
+  showQuestion(quizQuestions[currentIndex]);
 
 /* ===========================
    FETCH FUNCTIONS
