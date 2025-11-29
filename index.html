@@ -118,7 +118,7 @@
         <button
           class="col-12 btn btn-primary mb-5"
           data-bs-toggle="modal"
-          data-bs-target="#quizChoiceModal"
+          data-bs-target="#difficultyModal"
         >
           Start Saga
         </button>
@@ -448,14 +448,35 @@
       <div class="modal fade" id="difficultyModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
-            <!-- category + difficulty form -->
+            <div class="modal-header">
+              <h5 class="modal-title">Choose Your Challenge</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
             <div class="modal-body">
-              <select id="quizCategory">
-                ...
+              <label for="quizCategory" class="form-label">Category</label>
+              <select id="quizCategory" class="form-select">
+                <option value="9">General Knowledge</option>
+                <option value="18">Science: Computers</option>
+                <option value="19">Mathematics</option>
+                <option value="23">History</option>
+                <!-- add more OpenTDB category IDs -->
               </select>
-              <select id="quizDifficulty">
-                ...
+
+              <label for="quizDifficulty" class="form-label mt-3"
+                >Difficulty</label
+              >
+              <select id="quizDifficulty" class="form-select">
+                <option value="easy">Easy</option>
+                <option value="medium">Normal</option>
+                <option value="hard">Hard</option>
               </select>
+            </div>
+            <div class="modal-footer">
               <button id="startSagaBtn" class="btn btn-primary">
                 Start Saga
               </button>
@@ -463,14 +484,55 @@
           </div>
         </div>
       </div>
-
       <!-- Quiz Arena Modal -->
       <div class="modal fade" id="quizArenaModal" tabindex="-1">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Battle Arena</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
             <div class="modal-body">
               <div id="arena">
-                <!-- hero-block, quizContainer, enemy-block -->
+                <!-- Hero block -->
+                <div class="hero-block">
+                  <img
+                    id="hero-landscape"
+                    class="landscape"
+                    src=""
+                    alt="Hero Landscape"
+                  />
+                  <div class="hero-overlay">
+                    <div class="hearts-circle">
+                      <img id="hero-img" class="hero" src="" alt="Hero" />
+                      <div id="hero-hearts"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quiz container -->
+                <div id="quizContainer" class="my-4"></div>
+
+                <!-- Enemy block -->
+                <div class="enemy-block">
+                  <img
+                    id="enemy-landscape"
+                    class="landscape"
+                    src=""
+                    alt="Enemy Landscape"
+                  />
+                  <div class="enemy-overlay">
+                    <div class="hearts-circle">
+                      <img id="enemy-img" class="enemy" src="" alt="Enemy" />
+                      <div id="enemy-hearts"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -156,10 +156,8 @@ function renderArena(categoryKey, difficulty) {
   }
 
   // Landscape images
-  document.querySelector(".hero-block .landscape").innerHTML =
-    `<img src="${assets.landscape}" alt="${categoryKey} landscape">`;
-  document.querySelector(".enemy-block .landscape").innerHTML =
-    `<img src="${assets.landscape}" alt="${categoryKey} landscape">`;
+  document.getElementById("hero-landscape").src = assets.landscape;
+  document.getElementById("enemy-landscape").src = assets.landscape;
 
   // Hero + enemy images (update src only)
   document.getElementById("hero-img").src = assets.hero;
@@ -171,20 +169,42 @@ function renderHearts() {
   heroHearts.innerHTML = "";
   enemyHearts.innerHTML = "";
 
-  for (let i = 0; i < 10; i++) {
+  const totalHearts = 10;
+  const radius = 70; // distance from center (adjust for mobile/desktop)
+
+  for (let i = 0; i < totalHearts; i++) {
+    const angle = (i / totalHearts) * 2 * Math.PI; // distribute evenly around circle
+
     // Hero hearts
-    heroHearts.innerHTML += renderImage(
-      i < heroLives ? "assets/images/webp/full-heart.webp" : "assets/images/webp/empty-heart.webp",
-      i < heroLives ? "full heart" : "empty heart"
-    );
+    const heroHeart = document.createElement("img");
+    heroHeart.src = i < heroLives
+      ? "assets/images/webp/full-heart.webp"
+      : "assets/images/webp/empty-heart.webp";
+    heroHeart.alt = i < heroLives ? "full heart" : "empty heart";
+    heroHeart.style.position = "absolute";
+    heroHeart.style.width = "24px";
+    heroHeart.style.height = "24px";
+    heroHeart.style.left = `${50 + radius * Math.cos(angle)}%`;
+    heroHeart.style.top = `${50 + radius * Math.sin(angle)}%`;
+    heroHeart.style.transform = "translate(-50%, -50%)";
+    heroHearts.appendChild(heroHeart);
 
     // Enemy hearts
-    enemyHearts.innerHTML += renderImage(
-      i < enemyLives ? "assets/images/webp/full-heart.webp" : "assets/images/webp/empty-heart.webp",
-      i < enemyLives ? "full heart" : "empty heart"
-    );
+    const enemyHeart = document.createElement("img");
+    enemyHeart.src = i < enemyLives
+      ? "assets/images/webp/full-heart.webp"
+      : "assets/images/webp/empty-heart.webp";
+    enemyHeart.alt = i < enemyLives ? "full heart" : "empty heart";
+    enemyHeart.style.position = "absolute";
+    enemyHeart.style.width = "24px";
+    enemyHeart.style.height = "24px";
+    enemyHeart.style.left = `${50 + radius * Math.cos(angle)}%`;
+    enemyHeart.style.top = `${50 + radius * Math.sin(angle)}%`;
+    enemyHeart.style.transform = "translate(-50%, -50%)";
+    enemyHearts.appendChild(enemyHeart);
   }
 }
+
 
 // Handle answer and update lives
 function handleAnswer(isCorrect) {

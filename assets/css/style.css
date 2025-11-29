@@ -97,36 +97,61 @@ body{
   width: 100%;
   text-align: center;
   margin-bottom: 1rem;
+  overflow: hidden;        
 }
 
 .landscape {
-  width: 100%;
-  height: auto;
+  max-width: 100%;   
+  height: auto;       
   display: block;
+  object-fit: contain;
 }
 
+
+/* Overlay stays centered */
 .hero-overlay, .enemy-overlay {
   position: absolute;
-  top: 20%; /* adjust vertical placement */
+  top: 20%;                
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column; /* stack hearts above image */
+  flex-direction: column;
   align-items: center;
 }
 
+/* Scale hero/enemy images properly */
 .hero, .enemy {
-  width: 130%; /* smaller than landscape */
+  max-width: 60%;          
+  height: auto;
+}
+
+/* Hearts Circle */
+.hearts-circle {
+  position: relative;
+  width: 150px;   /* circle diameter */
+  height: 150px;
+  margin: 0 auto;
+}
+
+.hearts-circle img.hero,
+.hearts-circle img.enemy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center the hero/enemy */
+  width: 80px; /* size of hero/enemy */
   height: auto;
 }
 
 #hero-hearts img,
 #enemy-hearts img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 24px;
   height: 24px;
-  margin: 2px;
+  transform: translate(-50%, -50%);
 }
-
 
 /* Navbar Styles */
 
@@ -163,19 +188,12 @@ body{
 
 /* Media queries section */
 
- /** Small Breakpoint (upto 768px) */
-@media (max-width: 768px) {
-  #arena {
-    height: auto;
-    padding: 10px;
+/* Medium Breakpoint (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .landscape {
+    max-height: 300px;     /* allow more height on tablets/desktops */
   }
-
-  #hero, #enemy {
-    max-width: 120px;
+  .hero, .enemy {
+    max-width: 80%;        /* scale up slightly */
   }
-
-  .hearts img {
-    width: 18px;
-  }
-} 
-
+}
