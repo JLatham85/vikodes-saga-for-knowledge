@@ -72,30 +72,31 @@ function renderImage(path, altText) {
 /* ===========================
    START SAGA FUNCTIONS
    =========================== */
-// Wire button to initQuiz instead of startSaga directly
+// Wire button to initQuiz 
 document.getElementById("startSagaBtn").onclick = () => {
   initQuiz(selectedCategory, selectedDifficulty);
 };
 
-// Ffetch first, then start saga
+// Fetch first
 async function initQuiz(categoryKey, difficulty) {
   quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
 
   // Debug check: confirm questions loaded
   console.log("Fetched Questions:", quizQuestions.length);
-  startSaga();
-}
-// Start Saga function
+  console.log("First Question Object:", quizQuestions[0]);
 
-function startSaga() {
+  startSaga(categoryKey, difficulty);
+}
+
+// Start Saga function
+function startSaga(categoryKey, difficulty) {
   // Reset state for a fresh battle
   heroLives = 10;
   enemyLives = 10;
   currentIndex = 0;
 
   // Render arena using chosen category + difficulty
-  renderArena(selectedCategory, selectedDifficulty);
-
+  renderArena(categoryKey, difficulty);
 
   // Show hearts at full strength
   renderHearts();
@@ -356,21 +357,6 @@ async function fetchQuizQuestions(categoryKey, difficulty, amount = 10) {
   }
 }
 
-// Start quiz after choices
-async function startSaga(categoryKey, difficulty) {
-  // Reset state
-  heroLives = 10;
-  enemyLives = 10;
-  flashcards = [];
-  currentIndex = 0;
-}
-
-  // Render Arena before fetching questions
-  renderArena(categoryKey, difficulty);
-
-  // Fetch questions
-  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
-
  /* ===========================
    PAGE LOAD FUNCTIONS
    =========================== */
@@ -378,24 +364,24 @@ async function startSaga(categoryKey, difficulty) {
 // Trigger intro modal on page load
 
 document.addEventListener("DOMContentLoaded", function() {
-  var introModal = new bootstrap.Modal(document.getElementById('introModal'));
-  introModal.show();
+  // Check if the intro modal has already been shown before
+  if (!localStorage.getItem("introModalShown")) {
+    // Add a one-time click listener for first interaction
+    document.addEventListener("click", function handler() {
+      var introModalEl = document.getElementById("introModal");
+      var introModal = new bootstrap.Modal(introModalEl);
+
+      introModal.show();
+
+      // Mark as shown so it won't appear again on future visits
+      localStorage.setItem("introModalShown", "true");
+
+      // Remove the click listener so it only triggers once
+      document.removeEventListener("click", handler);
+    }, { once: true });
+  }
 });
 
-// Start quiz button event listener
-document.addEventListener("DOMContentLoaded", () => {
-  const startSagaBtn = document.getElementById("startSagaBtn");
-  const categorySelect = document.getElementById("quizCategory");
-  const difficultySelect = document.getElementById("quizDifficulty");
-
-  startSagaBtn.addEventListener("click", async () => {
-    const categoryKey = categorySelect.value;     
-    const difficulty = difficultySelect.value;    
-
-    // Call Saga start
-    await startSaga(categoryKey, difficulty);
-  });
-});
 
 /* ===========================
    FORM VALIDATION FUNCTIONS
