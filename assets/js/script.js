@@ -5,14 +5,50 @@ let currentIndex = 0;
 let heroLives = 10;
 let enemyLives = 10;
 let selectedCatergory = null;
+let selectedDifficulty = null;
+let heroMeeple = "";
+let enemyMeeple = "";
+let landscapeMeeple = "";
 
+// Arena mapping 
+const arenaAssets = {
+  generalKnowledge: {
+    hero:   <img src="assets/images/webp/hydra-me.webp" alt="hydra hero"></img>,
+    landscape: <img src="assets/images/webp/hydra-landscape.webp" alt="hydra landscape"></img>,
+    easy:   { enemy: <img src="assets/images/webp/hydra-easy.webp" alt="hydra enemy easy"></img>},
+    normal: { enemy: <img src="assets/images/webp/hydra-normal.webp" alt="hydra enemy normal"></img>},
+    hard:   { enemy: <img src="assets/images/webp/hydra-hard.webp" alt="hydra enemy hard"></img>}
+  },
+  scienceComputers: {
+    hero: <img src="assets/images/webp/troll-me.webp" alt="troll hero"></img>,
+    landscape: <img src="assets/images/webp/troll-landscape.webp" alt="troll landscape"></img>,
+    easy:   { enemy: <img src="assets/images/webp/troll-easy.webp" alt="troll enemy easy"></img>},
+    normal: { enemy: <img src="assets/images/webp/troll-normal.webp" alt="troll enemy normal"></img>},
+    hard:   { enemy: <img src="assets/images/webp/troll-hard.webp" alt="troll enemy hard"></img>}
+  },
+  mathematics: {
+    hero: <img src="assets/images/webp/dragon-me.webp" alt="dragon hero"></img>,
+    landscape: <img src="assets/images/webp/dragon-landscape.webp" alt="dragon landscape"></img>,
+    easy:   { enemy: <img src="assets/images/webp/dragon-easy.webp" alt="dragon enemy easy"></img>},
+    normal: { enemy: <img src="assets/images/webp/dragon-normal.webp" alt="dragon enemy normal"></img>},
+    hard:   { enemy: <img src="assets/images/webp/dragon-hard.webp" alt="dragon enemy hard"></img>}
+  },
+  history: {
+    hero: <img src="assets/images/webp/sorcerer-me.webp" alt="sorcerer hero"></img>,
+    landscape: <img src="assets/images/webp/sorcerer-landscape.webp" alt="sorcerer landscape"></img>,
+    easy:   { enemy: <img src="assets/images/webp/sorcerer-easy.webp" alt="sorcerer enemy easy"></img>},
+    normal: { enemy: <img src="assets/images/webp/sorcerer-normal.webp" alt="sorcerer enemy normal"></img>},
+    hard:   { enemy: <img src="assets/images/webp/sorcerer-hard.webp" alt="sorcerer enemy hard"></img>}
+  }
+  // add more categories here as needed
+};
 
-// Trigger intro modal on page load
+/** // Trigger intro modal on page load
 
 document.addEventListener("DOMContentLoaded", function() {
   var introModal = new bootstrap.Modal(document.getElementById('introModal'));
   introModal.show();
-});
+}); **/
 
 // Custom error message and validation for contact form
 

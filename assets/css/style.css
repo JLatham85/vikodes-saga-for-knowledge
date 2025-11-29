@@ -152,7 +152,7 @@ body{
 
 /* Media queries section */
 
-/* Small Breakpoint (upto 768px) */
+ /** Small Breakpoint (upto 768px) */
 @media (max-width: 768px) {
   #arena {
     height: auto;
@@ -166,5 +166,5 @@ body{
   .hearts img {
     width: 18px;
   }
-}
+} 
 
