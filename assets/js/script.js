@@ -69,6 +69,12 @@ function renderImage(path, altText) {
   return `<img src="${path}" alt="${altText}">`;
 }
 
+function decodeHtml(html) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
 /* ===========================
    START SAGA FUNCTIONS
    =========================== */
@@ -77,8 +83,21 @@ function renderImage(path, altText) {
 document.getElementById("startSagaBtn").onclick = () => {
   const selectedCategoryId = document.getElementById("quizCategory").value;
   const selectedDifficulty = document.getElementById("quizDifficulty").value;
+
+  // Close difficulty modal
+  const difficultyModal = bootstrap.Modal.getInstance(document.getElementById("difficultyModal"));
+  if (difficultyModal) {
+    difficultyModal.hide();
+  }
+
+  // Init quiz (fetch questions + render arena)
   initQuiz(selectedCategoryId, selectedDifficulty);
+
+  // Open quiz arena modal
+  const quizArenaModal = new bootstrap.Modal(document.getElementById("quizArenaModal"));
+  quizArenaModal.show();
 };
+
 
 // Fetch first using OpenTDB category ID
 async function initQuiz(categoryId, difficulty) {
@@ -129,25 +148,22 @@ function startSaga(categoryName, difficulty) {
    =========================== */
    
 // Render arena based on selected category and difficulty
-function renderArena(category, difficulty) {
-  const assets = arenaAssets[category];
+function renderArena(categoryKey, difficulty) {
+  const assets = arenaAssets[categoryKey];
+  if (!assets) {
+    console.error("No assets for category:", categoryKey);
+    return;
+  }
 
-  const arena = document.getElementById("arena");
-  arena.innerHTML = `
-    <div class="landscape">
-      ${renderImage(assets.landscape, `${category} landscape`)}
-    </div>
-    <div class="battle-row">
-      <div class="hero">
-        ${renderImage(assets.hero, `${category} hero`)}
-        <div id="hero-hearts"></div>
-      </div>
-      <div class="enemy">
-        ${renderImage(assets[difficulty].enemy, `${category} enemy ${difficulty}`)}
-        <div id="enemy-hearts"></div>
-      </div>
-    </div>
-  `;
+  // Landscape images
+  document.querySelector(".hero-block .landscape").innerHTML =
+    `<img src="${assets.landscape}" alt="${categoryKey} landscape">`;
+  document.querySelector(".enemy-block .landscape").innerHTML =
+    `<img src="${assets.landscape}" alt="${categoryKey} landscape">`;
+
+  // Hero + enemy images (update src only)
+  document.getElementById("hero-img").src = assets.hero;
+  document.getElementById("enemy-img").src = assets[difficulty].enemy;
 }
 
 // Render Hearts Function

@@ -92,28 +92,39 @@ body{
 
 /* Arena Layout */ 
 
-#arena {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
-  background: var(--eerie-black);
+.hero-block, .enemy-block {
   position: relative;
-}
-
-#hero-area, #enemy-area {
+  width: 100%;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-#hero, #enemy {
-  max-width: 200px;
+.landscape {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-overlay, .enemy-overlay {
+  position: absolute;
+  top: 20%; /* adjust vertical placement */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column; /* stack hearts above image */
+  align-items: center;
+}
+
+.hero, .enemy {
+  width: 130%; /* smaller than landscape */
   height: auto;
 }
 
-.hearts img {
-  width: 25px;
-  margin: 0 2px;
+#hero-hearts img,
+#enemy-hearts img {
+  width: 24px;
+  height: 24px;
+  margin: 2px;
 }
 
 

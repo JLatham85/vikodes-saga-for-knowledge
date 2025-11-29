@@ -445,71 +445,32 @@
         </div>
       </div>
       <!-- Quiz choice modal-->
-      <div class="modal fade" id="quizChoiceModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+      <div class="modal fade" id="difficultyModal" tabindex="-1">
+        <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Knowledge Finder</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
+            <!-- category + difficulty form -->
             <div class="modal-body">
-              <!-- Topic Selection -->
-              <div class="mb-3">
-                <label for="quizCategory" class="form-label"
-                  >Choose Topic</label
-                >
-                <select id="quizCategory" class="form-select">
-                  <option value="9">General Knowledge</option>
-                  <option value="18">Science: Computers</option>
-                  <option value="19">Mathematics</option>
-                  <option value="23">History</option>
-                  <!-- Add more categories from Open Trivia DB remeber to get the value -->
-                </select>
-              </div>
-
-              <!-- Difficulty Selection -->
-              <div class="mb-3">
-                <label for="quizDifficulty" class="form-label"
-                  >Choose Difficulty</label
-                >
-                <select id="quizDifficulty" class="form-select">
-                  <option value="easy">Easy</option>
-                  <option value="medium">Medium</option>
-                  <option value="hard">Hard</option>
-                </select>
-              </div>
-
+              <select id="quizCategory">
+                ...
+              </select>
+              <select id="quizDifficulty">
+                ...
+              </select>
               <button id="startSagaBtn" class="btn btn-primary">
                 Start Saga
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Quiz Arena Modal -->
+      <div class="modal fade" id="quizArenaModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-body">
               <div id="arena">
-                <!-- Hero top of Arena-->
-                <div id="hero-area">
-                  <img
-                    id="hero"
-                    src="assets/images/webp/deadspace-axes.webp"
-                    alt="Viking Hero placeholder"
-                  />
-                  <div id="hero-hearts" class="hearts"></div>
-                </div>
-
-                <!-- Quiz container in the middle -->
-                <div id="quizContainer"></div>
-
-                <!-- Enemy bottom of Arena -->
-                <div id="enemy-area">
-                  <img
-                    id="enemy"
-                    src="assets/images/webp/deadspace-axes.webp"
-                    alt="Enemy placeholder"
-                  />
-                  <div id="enemy-hearts" class="hearts"></div>
-                </div>
+                <!-- hero-block, quizContainer, enemy-block -->
               </div>
             </div>
           </div>
