@@ -30,35 +30,36 @@ const quizFeedback = document.getElementById("quizFeedback");
 
 const arenaAssets = {
   generalKnowledge: {
-    hero:   <img src="assets/images/webp/hydra-me.webp" alt="hydra hero"></img>,
-    landscape: <img src="assets/images/webp/hydra-landscape.webp" alt="hydra landscape"></img>,
-    easy:   { enemy: <img src="assets/images/webp/hydra-easy.webp" alt="hydra enemy easy"></img>},
-    normal: { enemy: <img src="assets/images/webp/hydra-normal.webp" alt="hydra enemy normal"></img>},
-    hard:   { enemy: <img src="assets/images/webp/hydra-hard.webp" alt="hydra enemy hard"></img>}
+    hero: "assets/images/webp/hydra-me.webp",
+    landscape: "assets/images/webp/hydra-landscape.webp",
+    easy:   { enemy: "assets/images/webp/hydra-easy.webp" },
+    normal: { enemy: "assets/images/webp/hydra-normal.webp" },
+    hard:   { enemy: "assets/images/webp/hydra-hard.webp" }
   },
   scienceComputers: {
-    hero: <img src="assets/images/webp/troll-me.webp" alt="troll hero"></img>,
-    landscape: <img src="assets/images/webp/troll-landscape.webp" alt="troll landscape"></img>,
-    easy:   { enemy: <img src="assets/images/webp/troll-easy.webp" alt="troll enemy easy"></img>},
-    normal: { enemy: <img src="assets/images/webp/troll-normal.webp" alt="troll enemy normal"></img>},
-    hard:   { enemy: <img src="assets/images/webp/troll-hard.webp" alt="troll enemy hard"></img>}
+    hero: "assets/images/webp/troll-me.webp",
+    landscape: "assets/images/webp/troll-landscape.webp",
+    easy:   { enemy: "assets/images/webp/troll-easy.webp" },
+    normal: { enemy: "assets/images/webp/troll-normal.webp" },
+    hard:   { enemy: "assets/images/webp/troll-hard.webp" }
   },
   mathematics: {
-    hero: <img src="assets/images/webp/dragon-me.webp" alt="dragon hero"></img>,
-    landscape: <img src="assets/images/webp/dragon-landscape.webp" alt="dragon landscape"></img>,
-    easy:   { enemy: <img src="assets/images/webp/dragon-easy.webp" alt="dragon enemy easy"></img>},
-    normal: { enemy: <img src="assets/images/webp/dragon-normal.webp" alt="dragon enemy normal"></img>},
-    hard:   { enemy: <img src="assets/images/webp/dragon-hard.webp" alt="dragon enemy hard"></img>}
+    hero: "assets/images/webp/dragon-me.webp",
+    landscape: "assets/images/webp/dragon-landscape.webp",
+    easy:   { enemy: "assets/images/webp/dragon-easy.webp" },
+    normal: { enemy: "assets/images/webp/dragon-normal.webp" },
+    hard:   { enemy: "assets/images/webp/dragon-hard.webp" }
   },
   history: {
-    hero: <img src="assets/images/webp/sorcerer-me.webp" alt="sorcerer hero"></img>,
-    landscape: <img src="assets/images/webp/sorcerer-landscape.webp" alt="sorcerer landscape"></img>,
-    easy:   { enemy: <img src="assets/images/webp/sorcerer-easy.webp" alt="sorcerer enemy easy"></img>},
-    normal: { enemy: <img src="assets/images/webp/sorcerer-normal.webp" alt="sorcerer enemy normal"></img>},
-    hard:   { enemy: <img src="assets/images/webp/sorcerer-hard.webp" alt="sorcerer enemy hard"></img>}
+    hero: "assets/images/webp/sorcerer-me.webp",
+    landscape: "assets/images/webp/sorcerer-landscape.webp",
+    easy:   { enemy: "assets/images/webp/sorcerer-easy.webp" },
+    normal: { enemy: "assets/images/webp/sorcerer-normal.webp" },
+    hard:   { enemy: "assets/images/webp/sorcerer-hard.webp" }
   }
   // add more categories here as needed
 };
+
 
 /* ===========================
    START SAGA FUNCTIONS
