@@ -72,6 +72,20 @@ function renderImage(path, altText) {
 /* ===========================
    START SAGA FUNCTIONS
    =========================== */
+// Wire button to initQuiz instead of startSaga directly
+document.getElementById("startSagaBtn").onclick = () => {
+  initQuiz(selectedCategory, selectedDifficulty);
+};
+
+// Ffetch first, then start saga
+async function initQuiz(categoryKey, difficulty) {
+  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
+
+  // Debug check: confirm questions loaded
+  console.log("Fetched Questions:", quizQuestions.length);
+  startSaga();
+}
+// Start Saga function
 
 function startSaga() {
   // Reset state for a fresh battle
@@ -93,11 +107,6 @@ function startSaga() {
     console.error("No quiz questions available!");
   }
 }
-
-// Wire the Start Saga button
-document.getElementById("startSagaBtn").onclick = () => {
-  startSaga();
-};
       
 /* ===========================
    BATTLE FUNCTIONS
