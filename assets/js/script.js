@@ -375,11 +375,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Start quiz button event listener
 document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("startSagaBtn");
+  const startSagaBtn = document.getElementById("startSagaBtn");
   const categorySelect = document.getElementById("quizCategory");
   const difficultySelect = document.getElementById("quizDifficulty");
 
-  startBtn.addEventListener("click", async () => {
+  startSagaBtn.addEventListener("click", async () => {
     const categoryKey = categorySelect.value;     
     const difficulty = difficultySelect.value;    
 
