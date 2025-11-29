@@ -121,8 +121,8 @@ function renderArena(category, difficulty) {
 }
 
 // Render Hearts Function
-
 function renderHearts() {
+  
   // Clear existing hearts
   heroHearts.innerHTML = "";
   enemyHearts.innerHTML = "";
@@ -151,9 +151,11 @@ function handleAnswer(isCorrect) {
   if (isCorrect) {
     // Correct: enemy loses a life
     enemyLives--;
+    quizFeedback.innerHTML += `<div class="alert alert-success">The enemy staggers! ⚔️</div>`;
   } else {
     // Wrong: hero loses a life
     heroLives--;
+    quizFeedback.innerHTML += `<div class="alert alert-danger">The hero is wounded! ❌</div>`;
   }
 
   renderHearts();
@@ -166,15 +168,29 @@ function handleAnswer(isCorrect) {
 
 function checkBattleEnd() {
   if (heroLives <= 0) {
-    alert("💀 The hero has fallen! Enemy wins.");
+    quizFeedback.innerHTML = `
+      <div class="alert alert-danger">
+        💀 The hero has fallen! Enemy wins.
+      </div>
+    `;
     return;
   }
+
   if (enemyLives <= 0) {
-    alert("🏆 Victory! The hero triumphs.");
+    quizFeedback.innerHTML = `
+      <div class="alert alert-success">
+        🏆 Victory! The hero triumphs.
+      </div>
+    `;
     return;
   }
+
   if (currentIndex >= quizQuestions.length) {
-    alert("📜 The battle ends — all questions answered.");
+    quizFeedback.innerHTML = `
+      <div class="alert alert-info">
+        📜 The battle ends — all questions answered.
+      </div>
+    `;
     return;
   }
 }
