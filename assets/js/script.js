@@ -1,3 +1,7 @@
+/* ===========================
+   STATE VARIABLES
+   =========================== */
+
 // All game state variables at top of script for ease of viewing
 
 let flashcards = [];
@@ -10,7 +14,10 @@ let heroMeeple = "";
 let enemyMeeple = "";
 let landscapeMeeple = "";
 
-// Arena mapping 
+/* ===========================
+   ARENA MAPPING
+   =========================== */
+
 const arenaAssets = {
   generalKnowledge: {
     hero:   <img src="assets/images/webp/hydra-me.webp" alt="hydra hero"></img>,
@@ -43,94 +50,94 @@ const arenaAssets = {
   // add more categories here as needed
 };
 
-/** // Trigger intro modal on page load
+/* ===========================
+   BATTLE FUNCTIONS
+   =========================== */
+   
+// Render arena based on selected category and difficulty
+function renderArena(category, difficulty) {
+  const assets = arenaAssets[category];
+  heroMeeple = assets.hero;                        
+  enemyMeeple = assets[difficulty].enemy;          // varies by difficulty
+  landscapeMeeple = assets.landscape;              
 
-document.addEventListener("DOMContentLoaded", function() {
-  var introModal = new bootstrap.Modal(document.getElementById('introModal'));
-  introModal.show();
-}); **/
+  const arena = document.getElementById("arena");
+  arena.innerHTML = `
+    <div class="landscape">
+      <img src="assets/images/webp/${landscapeMeeple}" 
+           alt="landscape" 
+           class="${difficulty}">
+    </div>
+    <div class="battle-row">
+      <div class="hero">
+        <img src="assets/images/webp/${heroMeeple}" alt="hero meeple">
+        <div id="hero-hearts"></div>
+      </div>
+      <div class="enemy">
+        <img src="assets/images/webp/${enemyMeeple}" alt="enemy meeple">
+        <div id="enemy-hearts"></div>
+      </div>
+    </div>
+  `;
+}
 
-// Custom error message and validation for contact form
+// Render Hearts Function
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
+function renderHearts() {
+  const heroHearts = document.getElementById("hero-hearts");
+  const enemyHearts = document.getElementById("enemy-hearts");
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+  heroHearts.innerHTML = "";
+  enemyHearts.innerHTML = "";
 
-    if (!form.checkValidity()) {
-      event.stopPropagation();
-      form.classList.add("was-validated"); 
+  // Hero hearts
+  for (let i = 0; i < 10; i++) {
+    if (i < heroLives) {
+      heroHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
     } else {
-      // Success message
-      const success = document.createElement("div");
-      success.className = "alert alert-success mt-3";
-      success.textContent = "Your Raven has flown with the Scroll!";
-      form.appendChild(success);
-
-      form.reset();
-      form.classList.remove("was-validated");
+      heroHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
     }
-  });
-});
+  }
 
-// Custom error message and validation for feedback form
-
-document.addEventListener("DOMContentLoaded", function () {
-  const feedbackForm = document.getElementById("feedbackForm");
-
-  feedbackForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // stop page reload
-
-    if (!feedbackForm.checkValidity()) {
-      // If invalid, show saga-style errors
-      event.stopPropagation();
-      feedbackForm.classList.add("was-validated");
+  // Enemy hearts
+  for (let i = 0; i < 10; i++) {
+    if (i < enemyLives) {
+      enemyHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
     } else {
-      // Success ritual
-      const successMessage = document.createElement("div");
-      successMessage.className = "alert alert-success mt-3";
-      successMessage.textContent = "Your raven has flown with the feedback! The saga scrolls have been updated.";
-
-      // Remove old banners if they exist
-      const oldMessage = feedbackForm.querySelector(".alert-success");
-      if (oldMessage) {
-        oldMessage.remove();
-      }
-
-      // Append new banner
-      feedbackForm.appendChild(successMessage);
-
-      // Reset form for next raid
-      feedbackForm.reset();
-      feedbackForm.classList.remove("was-validated");
+      enemyHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
     }
-  });
-});
+  }
+}
+    
+// Handle answer and update lives
 
-// Fetch Recommended Link Function
+function handleAnswer(isCorrect) {
+  if (isCorrect) {
+    enemyLives--;
+  } else {
+    heroLives--;
+  }
+  renderHearts();
+  checkBattleEnd();
+}
+    
+// Check battle end conditions
 
-async function fetchRecommendedLink(query) {
-   try {
-    const response = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`
-    );
-    const data = await response.json();
-
-    if (data.query.search.length > 0) {
-      const title = data.query.search[0].title;
-      return `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.error("Link fetch failed:", error);
-    return null;
+function checkBattleEnd() {
+  if (heroLives <= 0) {
+    document.getElementById("quizContainer").innerHTML =
+      `<div class="alert alert-danger">Hero defeated! 💀</div>`;
+  } else if (enemyLives <= 0) {
+    document.getElementById("quizContainer").innerHTML =
+      `<div class="alert alert-success">Enemy defeated! 🏆</div>`;
   }
 }
 
-
-// Add a flashcard in array session storage only 
+/* ===========================
+   FLASHCARD FUNCTIONS
+   =========================== */
+   
+// Add to flashcards function
 
 function addToFlashcards(question, correctAnswer, userAnswer) {
   fetchRecommendedLink(question).then(link => {
@@ -167,80 +174,12 @@ function deleteFlashcard(index) {
   renderFlashcards();
 }
 
-// Heart Rendering Function
-function renderHearts() {
-  const heroHearts = document.getElementById("hero-hearts");
-  const enemyHearts = document.getElementById("enemy-hearts");
-
-  heroHearts.innerHTML = "";
-  enemyHearts.innerHTML = "";
-
-  // Hero hearts
-  for (let i = 0; i < 10; i++) {
-    if (i < heroLives) {
-      heroHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
-    } else {
-      heroHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
-    }
-  }
-
-  // Enemy hearts
-  for (let i = 0; i < 10; i++) {
-    if (i < enemyLives) {
-      enemyHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
-    } else {
-      enemyHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
-    }
-  }
-}
-
-// Handle answer and update lives
-
-function handleAnswer(isCorrect) {
-  if (isCorrect) {
-    enemyLives--;
-  } else {
-    heroLives--;
-  }
-  renderHearts();
-  checkBattleEnd();
-}
-
-function checkBattleEnd() {
-  if (heroLives <= 0) {
-    document.getElementById("quizContainer").innerHTML =
-      `<div class="alert alert-danger">Hero defeated! 💀</div>`;
-  } else if (enemyLives <= 0) {
-    document.getElementById("quizContainer").innerHTML =
-      `<div class="alert alert-success">Enemy defeated! 🏆</div>`;
-  }
-}
-
-
-// Fetch quiz questions based on chosen category and difficulty from OpenTDB
-async function fetchQuizQuestions(category, difficulty, amount = 10) {
-  try {
-    const response = await fetch(
-      `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`
-    );
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error("Quiz fetch failed:", error);
-    return [];
-  }
-}
-
-// Start quiz after choices
-async function startQuiz() {
-  const category = document.getElementById("quizCategory").value;
-  const difficulty = document.getElementById("quizDifficulty").value;
-
-  const questions = await fetchQuizQuestions(category, difficulty);
-  renderQuiz(questions); // call the next function
-}
+/* ===========================
+   QUIZ FUNCTIONS
+   =========================== */
 
 // Render quiz (separate function, defined AFTER startQuiz)
+
 function renderQuiz(questions) {
   const quizContainer = document.getElementById("quizContainer");
   quizContainer.innerHTML = "";
@@ -300,10 +239,162 @@ function renderQuiz(questions) {
       quizOptions.appendChild(btn);
     });
   }
-
-  // show the first question
-  showQuestion(questions[currentIndex]);
 }
 
+// show the first question
+  showQuestion(questions[currentIndex]);
+
+/* ===========================
+   FETCH FUNCTIONS
+   =========================== */
+
+// Change difficulty description to mine from OpenTDB
+function mapDifficulty(difficulty) {
+  return difficulty === "normal" ? "medium" : difficulty;
+}
+
+// Map our internal categories
+const openTdbCategoryIds = {
+  generalKnowledge: 9,
+  scienceComputers: 18,
+  mathematics: 19, 
+  history: 23
+};
+
+// Fetch quiz questions from OpenTDB
+async function fetchQuizQuestions(categoryKey, difficulty, amount = 10) {
+  const categoryId = openTdbCategoryIds[categoryKey];
+  const apiDifficulty = mapDifficulty(difficulty);
+
+  try {
+    const response = await fetch(
+      `https://opentdb.com/api.php?amount=${amount}&category=${categoryId}&difficulty=${apiDifficulty}&type=multiple`
+    );
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("Quiz fetch failed:", error);
+    return [];
+  }
+}
+
+// Start quiz after choices
+async function startQuiz(categoryKey, difficulty) {
+  // Reset state
+  heroLives = 10;
+  enemyLives = 10;
+  flashcards = [];
+  currentIndex = 0;
+
+  // Render Arena before fetching questions
+  renderArena(categoryKey, difficulty);
+
+  // Fetch questions
+  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
+
+  // Show first question
+  showQuestion();
+}
+
+/* ===========================
+   PAGE LOAD FUNCTIONS
+   =========================== */
+
+// Trigger intro modal on page load
+
+document.addEventListener("DOMContentLoaded", function() {
+  var introModal = new bootstrap.Modal(document.getElementById('introModal'));
+  introModal.show();
+});
+
+    // attach event listeners to Start Quiz button, category/difficulty selectors
+    
+    // initialize arena container, reset lives, clear flashcards
+
+/* ===========================
+   FORM VALIDATION FUNCTIONS
+   =========================== */
+// Custom error message and validation for contact form
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      event.stopPropagation();
+      form.classList.add("was-validated"); 
+    } else {
+      // Success message
+      const success = document.createElement("div");
+      success.className = "alert alert-success mt-3";
+      success.textContent = "Your Raven has flown with the Scroll!";
+      form.appendChild(success);
+
+      form.reset();
+      form.classList.remove("was-validated");
+    }
+  });
+});
+
+// Custom error message and validation for feedback form
+
+document.addEventListener("DOMContentLoaded", function () {
+  const feedbackForm = document.getElementById("feedbackForm");
+
+  feedbackForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // stop page reload
+
+    if (!feedbackForm.checkValidity()) {
+      // If invalid, show saga-style errors
+      event.stopPropagation();
+      feedbackForm.classList.add("was-validated");
+    } else {
+      // Success ritual
+      const successMessage = document.createElement("div");
+      successMessage.className = "alert alert-success mt-3";
+      successMessage.textContent = "Your raven has flown with the feedback! The saga scrolls have been updated.";
+
+      // Remove old banners if they exist
+      const oldMessage = feedbackForm.querySelector(".alert-success");
+      if (oldMessage) {
+        oldMessage.remove();
+      }
+
+      // Append new banner
+      feedbackForm.appendChild(successMessage);
+
+      // Reset form for next raid
+      feedbackForm.reset();
+      feedbackForm.classList.remove("was-validated");
+    }
+  });
+});
+
+/* ===========================
+   LINK FUNCTIONS
+   =========================== */
+
+// Fetch Recommended Link Function
+
+async function fetchRecommendedLink(query) {
+   try {
+    const response = await fetch(
+      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`
+    );
+    const data = await response.json();
+
+    if (data.query.search.length > 0) {
+      const title = data.query.search[0].title;
+      return `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Link fetch failed:", error);
+    return null;
+  }
+}
 
 
