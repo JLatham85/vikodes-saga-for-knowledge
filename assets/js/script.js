@@ -60,6 +60,14 @@ const arenaAssets = {
   // add more categories here as needed
 };
 
+/*  ===========================
+    HELPER FUNCTIONS
+    =========================== */
+
+// Put renderImage() here so other functions can utilise
+function renderImage(path, altText) {
+  return `<img src="${path}" alt="${altText}">`;
+}
 
 /* ===========================
    START SAGA FUNCTIONS
@@ -73,6 +81,7 @@ function startSaga() {
 
   // Render arena using chosen category + difficulty
   renderArena(selectedCategory, selectedDifficulty);
+
 
   // Show hearts at full strength
   renderHearts();
@@ -97,24 +106,19 @@ document.getElementById("startSagaBtn").onclick = () => {
 // Render arena based on selected category and difficulty
 function renderArena(category, difficulty) {
   const assets = arenaAssets[category];
-  heroMeeple = assets.hero;                        
-  enemyMeeple = assets[difficulty].enemy;          // varies by difficulty
-  landscapeMeeple = assets.landscape;              
 
   const arena = document.getElementById("arena");
   arena.innerHTML = `
     <div class="landscape">
-      <img src="assets/images/webp/${landscapeMeeple}" 
-           alt="landscape" 
-           class="${difficulty}">
+      ${renderImage(assets.landscape, `${category} landscape`)}
     </div>
     <div class="battle-row">
       <div class="hero">
-        <img src="assets/images/webp/${heroMeeple}" alt="hero meeple">
+        ${renderImage(assets.hero, `${category} hero`)}
         <div id="hero-hearts"></div>
       </div>
       <div class="enemy">
-        <img src="assets/images/webp/${enemyMeeple}" alt="enemy meeple">
+        ${renderImage(assets[difficulty].enemy, `${category} enemy ${difficulty}`)}
         <div id="enemy-hearts"></div>
       </div>
     </div>
@@ -123,27 +127,21 @@ function renderArena(category, difficulty) {
 
 // Render Hearts Function
 function renderHearts() {
-  
-  // Clear existing hearts
   heroHearts.innerHTML = "";
   enemyHearts.innerHTML = "";
-  
-  // Hero hearts
-  for (let i = 0; i < 10; i++) {
-    if (i < heroLives) {
-      heroHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
-    } else {
-      heroHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
-    }
-  }
 
-  // Enemy hearts
   for (let i = 0; i < 10; i++) {
-    if (i < enemyLives) {
-      enemyHearts.innerHTML += '<img src="assets/images/webp/full-heart.webp" alt="full heart">';
-    } else {
-      enemyHearts.innerHTML += '<img src="assets/images/webp/empty-heart.webp" alt="empty heart">';
-    }
+    // Hero hearts
+    heroHearts.innerHTML += renderImage(
+      i < heroLives ? "assets/images/webp/full-heart.webp" : "assets/images/webp/empty-heart.webp",
+      i < heroLives ? "full heart" : "empty heart"
+    );
+
+    // Enemy hearts
+    enemyHearts.innerHTML += renderImage(
+      i < enemyLives ? "assets/images/webp/full-heart.webp" : "assets/images/webp/empty-heart.webp",
+      i < enemyLives ? "full heart" : "empty heart"
+    );
   }
 }
 
@@ -246,9 +244,9 @@ function deleteFlashcard(index) {
    QUIZ FUNCTIONS
    =========================== */
 
-// Render quiz (separate function, defined AFTER startQuiz)
-
+// Render quiz
 function showQuestion(q) {
+  // Render question card
   quizContainer.innerHTML = `
     <div class="card mb-3">
       <div class="card-body">
@@ -260,6 +258,9 @@ function showQuestion(q) {
   `;
 
   const quizOptions = document.getElementById("quizOptions");
+  quizOptions.innerHTML = "";
+
+  // Shuffle answers
   const options = [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5);
 
   options.forEach(option => {
@@ -278,7 +279,7 @@ function showQuestion(q) {
         `;
         handleAnswer(false);
 
-        // Flashcard button wiring
+        // Flashcard button
         const addBtn = document.getElementById("addFlashcardBtn");
         if (addBtn) {
           addBtn.onclick = () => {
@@ -293,25 +294,25 @@ function showQuestion(q) {
         }
       }
 
-    // Next Question button
-    const nextBtn = document.createElement("button");
-    nextBtn.id = "nextBtn";
-    nextBtn.className = "btn btn-primary mt-2";
-    nextBtn.textContent = "Next Question";
-    nextBtn.onclick = () => {
+      // Show Next Question button
+      const nextBtn = document.createElement("button");
+      nextBtn.id = "nextBtn";
+      nextBtn.className = "btn btn-primary mt-2";
+      nextBtn.textContent = "Next Question";
+      nextBtn.onclick = () => {
         currentIndex++;
         if (currentIndex < quizQuestions.length) {
-            showQuestion(quizQuestions[currentIndex]);
+          showQuestion(quizQuestions[currentIndex]);
         } else {
-            quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
+          quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
         }
+      };
+      quizFeedback.appendChild(nextBtn);
     };
-    quizFeedback.appendChild(nextBtn);
-};
 
-
-// show the first question
-  showQuestion(quizQuestions[currentIndex]);
+    quizOptions.appendChild(btn);
+  });
+}
 
 /* ===========================
    FETCH FUNCTIONS
@@ -361,13 +362,7 @@ async function startQuiz(categoryKey, difficulty) {
   // Fetch questions
   quizQuestions = await fetchQuizQuestions(categoryKey, difficulty);
 
-  // Show first question
-  function showQuestion() {
-    const questionObj = quizQuestions[currentIndex];
-  };
-}
-
-/* ===========================
+ /* ===========================
    PAGE LOAD FUNCTIONS
    =========================== */
 
