@@ -40,13 +40,6 @@ body{
 
 /* Button Styles */
 
-.introModal {
-    background-color: var(--eerie-black);
-    color: var(--white);
-    font-family: var(--retro-font);
-    border: none;
-}
-
 .btn {
     background-color: var(--fire-brick);
     color: var(--gold);

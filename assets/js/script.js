@@ -460,54 +460,42 @@ const categoryMap = {
 
 // Trigger intro modal on page load
 
-// PAGE LOAD FUNCTIONS (testing version delete after testing)
-/** document.addEventListener("DOMContentLoaded", function() {
-  document.addEventListener("click", function handler() {
-    var introModalEl = document.getElementById("introModal");
-    var introModal = new bootstrap.Modal(introModalEl);
+document.addEventListener("DOMContentLoaded", function () {
+  // Set your delay in milliseconds (e.g., 800ms)
+  const INTRO_DELAY_MS = 500;
 
+  // Select elements
+  const introModalEl = document.getElementById("introModal");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  // Safety check: only proceed if modal exists
+  if (!introModalEl) return;
+
+  // Disable nav links immediately to avoid early clicks during delay
+  navLinks.forEach(link => link.classList.add("disabled"));
+
+  setTimeout(() => {
+    const introModal = new bootstrap.Modal(introModalEl, {
+      backdrop: "static", // lock the page
+      keyboard: false     // prevent ESC close
+    });
+
+    // Show the modal
     introModal.show();
 
-    // Wait until modal is fully open before moving focus
+    // Accessibility: focus the primary button when visible
     introModalEl.addEventListener("shown.bs.modal", function () {
-      // Safe to move focus now
-      introModalEl.querySelector(".btn-primary").focus();
-    }, { once: true });
+      const primaryBtn = introModalEl.querySelector(".btn-primary, [data-bs-dismiss='modal']");
+      if (primaryBtn) primaryBtn.focus();
+    });
 
-    document.removeEventListener("click", handler);
-  }, { once: true });
-}); **/
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  if (!localStorage.getItem("introModalShown")) {
-    document.addEventListener("click", function handler() {
-      var introModalEl = document.getElementById("introModal");
-      var introModal = new bootstrap.Modal(introModalEl, {
-        backdrop: "static", // prevent closing by clicking outside
-        keyboard: false     // prevent closing with ESC
-      });
-      introModal.show();
-
-      // Accessibility: focus primary button
-      introModalEl.addEventListener("shown.bs.modal", function () {
-        introModalEl.querySelector(".btn-primary").focus();
-      });
-
-      // Disable nav links while introModal is open
-      var navLinks = document.querySelectorAll(".nav-link");
-      introModalEl.addEventListener("show.bs.modal", function () {
-        navLinks.forEach(link => link.classList.add("disabled"));
-      });
-      introModalEl.addEventListener("hidden.bs.modal", function () {
-        navLinks.forEach(link => link.classList.remove("disabled"));
-      });
-
-      localStorage.setItem("introModalShown", "true");
-      document.removeEventListener("click", handler);
-    }, { once: true });
-  }
+    // Re-enable nav only after modal closes
+    introModalEl.addEventListener("hidden.bs.modal", function () {
+      navLinks.forEach(link => link.classList.remove("disabled"));
+    });
+  }, INTRO_DELAY_MS);
 });
+
 
 /* ===========================
    FORM VALIDATION FUNCTIONS
