@@ -100,25 +100,29 @@ document.getElementById("startSagaBtn").onclick = () => {
 // Fetch first using OpenTDB category ID
 async function initQuiz(categoryKey, difficulty) {
   quizQuestions = await fetchQuizQuestions(categoryKey, difficulty, 20);
+  console.log("QuizQuestions after fetch:", quizQuestions);
 
   if (quizQuestions.length === 0) {
     console.error("No quiz questions returned from API!");
     return;
   }
 
-  const categoryName = categoryKey; // keep the key for saga/story
-  startSaga(categoryName, difficulty);
+  const categoryName = categoryKey;
+  startSaga(categoryName, difficulty, quizQuestions); // pass questions in
 }
 
 
 
+
 // Start Saga function
-function startSaga(categoryName, difficulty) {
+function startSaga(categoryName, difficulty, quizQuestions) {
   const internalKey = categoryMap[categoryName];
   if (!internalKey) {
     console.error("No mapping found for category:", categoryName);
     return;
   }
+
+  console.log("Starting saga with", quizQuestions.length, "questions");
 
   // Reset state for a fresh battle
   heroLives = 10;
@@ -138,6 +142,7 @@ function startSaga(categoryName, difficulty) {
     console.error("No quiz questions available!");
   }
 }
+
      
 /* ===========================
    BATTLE FUNCTIONS
@@ -413,11 +418,18 @@ async function fetchQuizQuestions(categoryName, difficulty, amount = 20) {
   const categoryId = openTdbCategoryIds[categoryName];
   const apiDifficulty = mapDifficulty(difficulty);
 
+  console.log(
+    `Fetching quiz: categoryName=${categoryName}, categoryId=${categoryId}, difficulty=${apiDifficulty}, amount=${amount}`
+  );
+
+
   try {
     const response = await fetch(
       `https://opentdb.com/api.php?amount=${amount}&category=${categoryId}&difficulty=${apiDifficulty}&type=multiple`
     );
     const data = await response.json();
+    console.log("API raw data:", data);
+
     return data.results || [];
   } catch (error) {
     console.error("Quiz fetch failed:", error);
@@ -431,10 +443,10 @@ async function fetchQuizQuestions(categoryName, difficulty, amount = 20) {
 
 // Bridge between OpenTDB names and our internal keys)
 const categoryMap = {
-  "General Knowledge": "generalKnowledge",
-  "Science: Computers": "scienceComputers",
-  "Mathematics": "mathematics",
-  "History": "history"
+  "generalKnowledge": "generalKnowledge",
+  "scienceComputers": "scienceComputers",
+  "mathamatics": "mathematics",
+  "history": "history"
 };
 
  /* ===========================
@@ -564,3 +576,11 @@ async function fetchRecommendedLink(query) {
     return null;
   }
 }
+
+// Link Start Saga button to initQuiz
+document.getElementById("startSagaBtn").onclick = function () {
+  const categoryKey = document.getElementById("quizCategory").value;
+  const difficulty = document.getElementById("quizDifficulty").value;
+
+  initQuiz(categoryKey, difficulty);
+};
