@@ -178,8 +178,7 @@ function renderHearts() {
   const radius = 70; // distance from center (adjust for mobile/desktop)
 
   for (let i = 0; i < totalHearts; i++) {
-    const angle = (i / totalHearts)
-     * 2 * Math.PI; // distribute evenly around circle
+    const angle = (i / totalHearts) * 2 * Math.PI; // distribute evenly around circle
 
     // Hero hearts
     const heroHeart = document.createElement("img");
@@ -187,9 +186,8 @@ function renderHearts() {
       ? "assets/images/webp/full-heart.webp"
       : "assets/images/webp/empty-heart.webp";
     heroHeart.alt = i < heroLives ? "full heart" : "empty heart";
+    heroHeart.classList.add("heart"); 
     heroHeart.style.position = "absolute";
-    heroHeart.style.width = "24px";
-    heroHeart.style.height = "24px";
     heroHeart.style.left = `${50 + radius * Math.cos(angle)}%`;
     heroHeart.style.top = `${50 + radius * Math.sin(angle)}%`;
     heroHeart.style.transform = "translate(-50%, -50%)";
@@ -201,9 +199,8 @@ function renderHearts() {
       ? "assets/images/webp/full-heart.webp"
       : "assets/images/webp/empty-heart.webp";
     enemyHeart.alt = i < enemyLives ? "full heart" : "empty heart";
+    enemyHeart.classList.add("heart"); 
     enemyHeart.style.position = "absolute";
-    enemyHeart.style.width = "24px";
-    enemyHeart.style.height = "24px";
     enemyHeart.style.left = `${50 + radius * Math.cos(angle)}%`;
     enemyHeart.style.top = `${50 + radius * Math.sin(angle)}%`;
     enemyHeart.style.transform = "translate(-50%, -50%)";
