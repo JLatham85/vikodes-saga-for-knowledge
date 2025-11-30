@@ -178,6 +178,60 @@ body{
   opacity: 0.8;
 }
 
+    /* Edit BS Burger Icon - Purposely wrap round middle line */
+
+.navbar-toggler {
+  border: 2px solid var(--gold);
+  padding: 4px 6px;
+}
+
+.navbar-toggler-icon {
+  background-image: none; /* remove default SVG */
+  width: 24px;
+  height: 2px;
+  background-color: var(--gold); 
+  display: block;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background-color: var(--gold);
+  display: block;
+  position: absolute;
+  left: 0;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px;
+}
+
+.navbar-toggler[aria-expanded="true"] {
+  border-color: var(--eerie-black); 
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon,
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  background-color: var(--eerie-black); 
+}
+
+.navbar-toggler,
+.navbar-toggler-icon,
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  transition: all 0.3s ease;
+}
+
 /* Footer */
 
 #footer {
