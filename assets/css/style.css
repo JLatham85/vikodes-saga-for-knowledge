@@ -347,16 +347,10 @@ body{
   .landscape {
   display: block;
   width: 100%;
-  height: 200px;       
+  height: 315px;       
   object-fit: cover;       
   object-position: center;
   margin: 0 auto;          
-  }
-
-  /* Landscape images smaller */
-  #hero-landscape, #enemy-landscape {
-    max-width: 100%;
-    height: auto;
   }
 }
 
