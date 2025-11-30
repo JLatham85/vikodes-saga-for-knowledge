@@ -98,21 +98,19 @@ document.getElementById("startSagaBtn").onclick = () => {
 
 
 // Fetch first using OpenTDB category ID
-async function initQuiz(categoryId, difficulty) {
-  const res = await fetch(
-    `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`
-  );
-  const data = await res.json();
-  quizQuestions = data.results || [];
+async function initQuiz(categoryKey, difficulty) {
+  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty, 20);
 
   if (quizQuestions.length === 0) {
     console.error("No quiz questions returned from API!");
     return;
   }
 
-  const categoryName = quizQuestions[0].category;
+  const categoryName = categoryKey; // keep the key for saga/story
   startSaga(categoryName, difficulty);
 }
+
+
 
 // Start Saga function
 function startSaga(categoryName, difficulty) {
@@ -351,6 +349,8 @@ function showQuestion(q) {
                     });
                 }
                 renderFlashcards();
+
+                addBtn.remove();
             };
         }
       }
@@ -409,7 +409,7 @@ const openTdbCategoryIds = {
 };
 
 // Fetch quiz questions from OpenTDB
-async function fetchQuizQuestions(categoryName, difficulty, amount = 50) {
+async function fetchQuizQuestions(categoryName, difficulty, amount = 20) {
   const categoryId = openTdbCategoryIds[categoryName];
   const apiDifficulty = mapDifficulty(difficulty);
 
