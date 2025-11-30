@@ -461,7 +461,7 @@ const categoryMap = {
 // Trigger intro modal on page load
 
 // PAGE LOAD FUNCTIONS (testing version delete after testing)
-document.addEventListener("DOMContentLoaded", function() {
+/** document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener("click", function handler() {
     var introModalEl = document.getElementById("introModal");
     var introModal = new bootstrap.Modal(introModalEl);
@@ -476,25 +476,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.removeEventListener("click", handler);
   }, { once: true });
-});
+}); **/
 
 
-/** document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
   if (!localStorage.getItem("introModalShown")) {
     document.addEventListener("click", function handler() {
       var introModalEl = document.getElementById("introModal");
-      var introModal = new bootstrap.Modal(introModalEl);
+      var introModal = new bootstrap.Modal(introModalEl, {
+        backdrop: "static", // prevent closing by clicking outside
+        keyboard: false     // prevent closing with ESC
+      });
       introModal.show();
 
+      // Accessibility: focus primary button
       introModalEl.addEventListener("shown.bs.modal", function () {
         introModalEl.querySelector(".btn-primary").focus();
+      });
+
+      // Disable nav links while introModal is open
+      var navLinks = document.querySelectorAll(".nav-link");
+      introModalEl.addEventListener("show.bs.modal", function () {
+        navLinks.forEach(link => link.classList.add("disabled"));
+      });
+      introModalEl.addEventListener("hidden.bs.modal", function () {
+        navLinks.forEach(link => link.classList.remove("disabled"));
       });
 
       localStorage.setItem("introModalShown", "true");
       document.removeEventListener("click", handler);
     }, { once: true });
   }
-}); **/
+});
 
 /* ===========================
    FORM VALIDATION FUNCTIONS
