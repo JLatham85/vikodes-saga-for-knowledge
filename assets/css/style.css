@@ -284,7 +284,7 @@ body{
 
 /* Media queries section */
 
-/* Medium Breakpoint (tablets, 768px and up) */
+/* Mobile phone (576px and up) */
 @media (max-width: 576px) {
   .card-title {
     font-size: 1rem;   /* smaller font */
@@ -292,11 +292,44 @@ body{
   }
 }
 
-@media (min-width: 768px) {
-  .landscape {
-    max-height: 300px;     /* allow more height on tablets/desktops */
-  }
+/* iPad Portrait (768–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
   .hero, .enemy {
-    max-width: 80%;        /* scale up slightly */
+    max-width: 85%;   /* slightly narrower for portrait */
   }
+  .card-title {
+    font-size: 1.2rem; /* scale up for readability */
+  }
+  .modal-dialog {
+    max-width: 600px; /* keep modals compact */
+  }
+}
+
+/* iPad Landscape (768–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .hero, .enemy {
+    max-width: 70%;   /* more width available */
+  }
+  .card-title {
+    font-size: 1.3rem; /* slightly larger */
+  }
+  .modal-dialog {
+    max-width: 800px; /* wider modals */
+  }
+}
+
+/* Laptop (1025px–1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  #quizContainer { max-width: 60%; margin: 0 auto; }
+  .hero, .enemy { max-width: 60%; }
+  .card-title { font-size: 1.4rem; }
+  .modal-dialog { max-width: 900px; }
+}
+
+/* Large Desktop (1441px and up) */
+@media (min-width: 1441px) {
+  #quizContainer { max-width: 50%; margin: 0 auto; }
+  .hero, .enemy { max-width: 50%; }
+  .card-title { font-size: 1.6rem; }
+  .modal-dialog { max-width: 1100px; }
 }
