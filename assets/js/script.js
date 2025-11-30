@@ -21,8 +21,6 @@ const arena = document.getElementById("arena");
 const quizContainer = document.getElementById("quizContainer");
 const heroHearts = document.getElementById("hero-hearts");
 const enemyHearts = document.getElementById("enemy-hearts");
-const quizFeedback = document.getElementById("quizFeedback");
-
 
 /* ===========================
    ARENA MAPPING
@@ -205,7 +203,6 @@ function renderHearts() {
   }
 }
 
-
 // Handle answer and update lives
 function handleAnswer(isCorrect) {
   if (isCorrect) {
@@ -316,6 +313,8 @@ function showQuestion(q) {
   `;
 
   const quizOptions = document.getElementById("quizOptions");
+  const feedbackEl = document.getElementById("quizFeedback"); // <- use this
+
   quizOptions.innerHTML = "";
 
   // Shuffle answers
@@ -327,11 +326,13 @@ function showQuestion(q) {
     btn.textContent = decodeHtml(option);
 
     btn.onclick = () => {
-      if (option === q.correct_answer) {
-        quizFeedback.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
+      const isCorrect = option === q.correct_answer;
+
+      if (isCorrect) {
+        feedbackEl.innerHTML = `<div class="alert alert-success">Correct! ⚔️</div>`;
         handleAnswer(true);
       } else {
-        quizFeedback.innerHTML = `
+        feedbackEl.innerHTML = `
           <div class="alert alert-danger">Wrong! ❌</div>
           <button id="addFlashcardBtn" class="btn btn-warning">Add to Flashcards</button>
         `;
@@ -340,15 +341,17 @@ function showQuestion(q) {
         // Flashcard button
         const addBtn = document.getElementById("addFlashcardBtn");
         if (addBtn) {
-          addBtn.onclick = () => {
-            if (!flashcards.some(fc => fc.question === q.question)) {
-              flashcards.push({
-                question: decodeHtml(q.question),
-                correctAnswer: decodeHtml(q.correct_answer)
-              });
-            }
-            renderFlashcards();
-          };
+            addBtn.onclick = () => {
+                if (!flashcards.some(fc => fc.question === q.question)) {
+                    flashcards.push({
+                        question: decodeHtml(q.question),
+                        userAnswer: decodeHtml(option), // what the player picked
+                        correctAnswer: decodeHtml(q.correct_answer),
+                        link: `https://en.wikipedia.org/wiki/${encodeURIComponent(q.correct_answer)}`
+                    });
+                }
+                renderFlashcards();
+            };
         }
       }
 
@@ -358,21 +361,35 @@ function showQuestion(q) {
         nextBtn.id = "nextBtn";
         nextBtn.className = "btn btn-primary mt-2";
         nextBtn.textContent = "Next Question";
-        nextBtn.onclick = () => {
-          currentIndex++;
-          if (currentIndex < quizQuestions.length) {
-            showQuestion(quizQuestions[currentIndex]);
-          } else {
-            quizFeedback.innerHTML = `<div class="alert alert-info">Raid complete!</div>`;
-          }
-        };
-        quizFeedback.appendChild(nextBtn);
+        nextBtn.onclick = nextQuestion;
+        feedbackEl.appendChild(nextBtn);
       }
     };
 
     quizOptions.appendChild(btn);
   });
 }
+function nextQuestion() {
+  // Check battle state first
+  if (heroLives <= 0) {
+    endBattle("Hero defeated!");
+    return;
+  }
+  if (enemyLives <= 0) {
+    endBattle("Enemy defeated!");
+    return;
+  }
+
+  // Progress to next question
+  currentIndex++;
+  if (currentIndex < quizQuestions.length) {
+    showQuestion(quizQuestions[currentIndex]);
+  } else {
+    // If questions run out but hearts remain, fetch more
+    fetchMoreQuestions();
+  }
+}
+
 
 /* ===========================
    FETCH FUNCTIONS
@@ -392,7 +409,7 @@ const openTdbCategoryIds = {
 };
 
 // Fetch quiz questions from OpenTDB
-async function fetchQuizQuestions(categoryName, difficulty, amount = 10) {
+async function fetchQuizQuestions(categoryName, difficulty, amount = 50) {
   const categoryId = openTdbCategoryIds[categoryName];
   const apiDifficulty = mapDifficulty(difficulty);
 
