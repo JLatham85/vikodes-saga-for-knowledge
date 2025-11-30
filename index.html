@@ -67,7 +67,14 @@
         <div class="collapse navbar-collapse" id="navigationcollapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#"> How to Play </a>
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#howtoplay"
+              >
+                How to Play
+              </a>
             </li>
             <li class="nav-item">
               <a
@@ -122,7 +129,13 @@
         >
           Start Saga
         </button>
-        <button class="col-12 btn btn-primary mb-5">How to Play</button>
+        <button
+          class="col-12 btn btn-primary mb-5"
+          data-bs-toggle="modal"
+          data-bs-target="#howtoplay"
+        >
+          How to Play
+        </button>
         <button
           class="col-12 btn btn-primary mb-5"
           data-bs-toggle="modal"
@@ -421,6 +434,61 @@
                   Submit Feedback
                 </button>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- How to Play Modal-->
+      <div class="modal fade" id="howtoplay" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                How to Play Vikodes Saga for Knowledge
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ol>
+                <li>
+                  <strong>Start Your Saga:</strong> Click the "Start Saga"
+                  button to begin your adventure. Choose your quiz category and
+                  difficulty level to set the stage for your journey.
+                </li>
+                <li>
+                  <strong>Battle Mechanics:</strong> Answer quiz questions to
+                  attack your enemy. Correct answers deal damage, while wrong
+                  answers allow the enemy to strike back. Keep an eye on your
+                  health and theirs!
+                </li>
+                <li>
+                  <strong>Use Flashcards:</strong> Access the Flashcards
+                  Monastery from the main menu to review key concepts and
+                  prepare for upcoming battles. Strengthen your knowledge to
+                  improve your chances of victory.
+                </li>
+                <li>
+                  <strong>Victory Conditions:</strong> Defeat all enemies by
+                  reducing their health to zero. Each victory brings you closer
+                  to mastering the saga of knowledge!
+                </li>
+                <li>
+                  <strong>Feedback and Support:</strong> Use the Feedback and
+                  Contact Us modals to share your thoughts or seek assistance.
+                  Your input helps us improve the game experience.
+                </li>
+              </ol>
+              <p>
+                <strong>Tip:</strong> Each difficulty changes the challenge of
+                the riddles.
+              </p>
+              <hr />
+              Embark on your quest for knowledge, brave the challenges ahead,
+              and may your mind be as sharp as your sword!
             </div>
           </div>
         </div>
