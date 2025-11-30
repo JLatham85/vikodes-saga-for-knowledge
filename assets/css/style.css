@@ -296,36 +296,49 @@ body{
 
 /* iPad Portrait (768–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  #quizArenaModal .modal-dialog {
-    max-width: 750px;   /* expand modal */
+  /* Intro Modal wider */
+  #introModal .modal-dialog {
+    max-width: 700px;
+    margin: 0 auto;
   }
 
-  /* Override hero & enemy inside hearts-circle */
-  .hearts-circle img.hero,
-  .hearts-circle img.enemy {
-    max-width: 364px;   /* portrait size */
-    height: auto;
-  }
-
-  /* Scale landscapes */
-  #hero-landscape, #enemy-landscape {
-    max-width: 95%;
-    height: auto;
-  }
-
-  /* Scale hearts */
-  #hero-hearts img,
-  #enemy-hearts img {
-    width: 28px;
-    height: 28px;
-  }
-
-  /* Base image scaling */
-  .base {
+  /* Base image bigger without footer push */
+  .base-me.img {
     max-width: 80%;
     height: auto;
     margin: 0 auto;
     display: block;
+  }
+
+  /* Fix numeric overhang in How to Play */
+  #howtoplay {
+    padding: 0 1rem;       
+    line-height: 1.4;     
+  }
+  /* Landscape images smaller */
+  #hero-landscape, #enemy-landscape {
+    max-width: 85%;
+    height: auto;
+  }
+
+  /* Hearts circle bigger */
+  .hearts-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Hero & enemy images bigger inside circle */
+  .hearts-circle img.hero,
+  .hearts-circle img.enemy {
+    max-width: 160px;
+    height: auto;
+  }
+
+  /* Heart images bigger */
+  #hero-hearts img,
+  #enemy-hearts img {
+    width: 32px;
+    height: 32px;
   }
 }
 
