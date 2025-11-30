@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap');
+
 
 /* CSS Variable Styles */
 
@@ -128,7 +129,8 @@ body{
 
     /* Scale hero/enemy images properly */
 .hero, .enemy {
-  width: 140px;            
+  width: 100%;
+  max-width: 140px;            
   height: auto;
   z-index: 3;
 }
@@ -294,39 +296,49 @@ body{
 
 /* iPad Portrait (768–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .quiz-modal .modal-dialog {
+  #quizArenaModal .modal-dialog {
     max-width: 750px;   /* expand modal */
   }
 
-  /* Scale all arena images */
-  .hero, .enemy, .heart, .landscape {
-    transform: scale(1.2);   /* enlarge consistently */
+  /* Override hero & enemy inside hearts-circle */
+  .hearts-circle img.hero,
+  .hearts-circle img.enemy {
+    max-width: 364px;   /* portrait size */
+    height: auto;
   }
 
-  /* Optional: keep proportions tidy */
-  .hero, .enemy {
-    max-width: 90%;
+  /* Scale landscapes */
+  #hero-landscape, #enemy-landscape {
+    max-width: 95%;
+    height: auto;
   }
-  .heart {
+
+  /* Scale hearts */
+  #hero-hearts img,
+  #enemy-hearts img {
     width: 28px;
     height: 28px;
   }
-  .landscape {
-    max-width: 95%;
+
+  /* Base image scaling */
+  .base {
+    max-width: 80%;
     height: auto;
+    margin: 0 auto;
+    display: block;
   }
 }
 
 /* iPad Landscape (768–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .hero, .enemy {
-    max-width: 70%;   /* more width available */
+    max-width: 70%;   
   }
   .card-title {
-    font-size: 1.3rem; /* slightly larger */
+    font-size: 1.3rem; 
   }
   .modal-dialog {
-    max-width: 800px; /* wider modals */
+    max-width: 800px; 
   }
 }
 
