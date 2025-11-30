@@ -175,7 +175,7 @@ function renderHearts() {
   enemyHearts.innerHTML = "";
 
   const totalHearts = 10;
-  const radius = 70; // distance from center (adjust for mobile/desktop)
+  const radius = window.innerWidth < 576 ? 55 : 70;
 
   for (let i = 0; i < totalHearts; i++) {
     const angle = (i / totalHearts) * 2 * Math.PI; // distribute evenly around circle
