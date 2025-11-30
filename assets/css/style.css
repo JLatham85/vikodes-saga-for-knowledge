@@ -169,6 +169,14 @@ body{
   100% { transform: translateX(0); }
 }
 
+/* Image Styles */
+
+.base-me-img {
+  max-width: 170px;
+  height: auto;
+  display: inline-block;
+}
+
 /* Navbar Styles */
 
 .logo {
