@@ -241,12 +241,15 @@ function giveFeedback(targetElement) {
 
 // Check battle end conditions
 function checkBattleEnd() {
+    const feedbackEl = document.getElementById("quizFeedback");
+
   if (heroLives <= 0) {
     quizFeedback.innerHTML = `
       <div class="alert alert-danger">
         💀 The hero has fallen! Enemy wins.
       </div>
     `;
+    endBattle(feedbackEl);
     return;
   }
 
@@ -256,6 +259,7 @@ function checkBattleEnd() {
         🏆 Victory! The hero triumphs.
       </div>
     `;
+    endBattle(feedbackEl);
     return;
   }
 
@@ -265,8 +269,36 @@ function checkBattleEnd() {
         📜 The battle ends — all questions answered.
       </div>
     `;
+    endBattle(feedbackEl);
     return;
   }
+}
+
+function endBattle(feedbackEl) {
+  // Remove any existing Next button
+  const nextBtn = document.getElementById("nextBtn");
+  if (nextBtn) nextBtn.remove();
+
+  // Add a Finish button to close the quiz modal
+  const finishBtn = document.createElement("button");
+  finishBtn.id = "finishBtn";
+  finishBtn.className = "btn btn-secondary mt-2";
+  finishBtn.textContent = "Finish Battle";
+
+  finishBtn.onclick = () => {
+    // Clear quiz container
+    quizContainer.innerHTML = "";
+
+    // ⚔️ CO: Close the entire quiz modal here
+    const quizArenaModalEl = document.getElementById("quizArenaModal");
+    let quizArenaModal = bootstrap.Modal.getInstance(quizArenaModalEl);
+    if (!quizArenaModal) {
+      quizArenaModal = new bootstrap.Modal(quizArenaModalEl);
+    }
+    quizArenaModal.hide();
+  }; 
+
+  feedbackEl.appendChild(finishBtn);
 }
 
 /* ===========================
@@ -332,7 +364,7 @@ function showQuestion(q) {
   `;
 
   const quizOptions = document.getElementById("quizOptions");
-  const feedbackEl = document.getElementById("quizFeedback"); // <- use this
+  const feedbackEl = document.getElementById("quizFeedback");
 
   quizOptions.innerHTML = "";
 
@@ -360,19 +392,18 @@ function showQuestion(q) {
         // Flashcard button
         const addBtn = document.getElementById("addFlashcardBtn");
         if (addBtn) {
-            addBtn.onclick = () => {
-                if (!flashcards.some(fc => fc.question === q.question)) {
-                    flashcards.push({
-                        question: decodeHtml(q.question),
-                        userAnswer: decodeHtml(option), // what the player picked
-                        correctAnswer: decodeHtml(q.correct_answer),
-                        link: `https://en.wikipedia.org/wiki/${encodeURIComponent(q.correct_answer)}`
-                    });
-                }
-                renderFlashcards();
-
-                addBtn.remove();
-            };
+          addBtn.onclick = () => {
+            if (!flashcards.some(fc => fc.question === q.question)) {
+              flashcards.push({
+                question: decodeHtml(q.question),
+                userAnswer: decodeHtml(option),
+                correctAnswer: decodeHtml(q.correct_answer),
+                link: `https://en.wikipedia.org/wiki/${encodeURIComponent(q.correct_answer)}`
+              });
+            }
+            renderFlashcards();
+            addBtn.remove();
+          };
         }
       }
 
@@ -380,18 +411,20 @@ function showQuestion(q) {
       document.querySelectorAll(".answer-btn").forEach(b => b.disabled = true);
 
       // Show Next Question button (only once per question)
-      if (!document.getElementById("nextBtn")) {
+      // ⚔️ Only if battle is not already over
+      if (!document.getElementById("nextBtn") && heroLives > 0 && enemyLives > 0) {
         const nextBtn = document.createElement("button");
         nextBtn.id = "nextBtn";
         nextBtn.className = "btn btn-primary mt-2";
         nextBtn.textContent = "Next Question";
         nextBtn.onclick = nextQuestion;
         feedbackEl.appendChild(nextBtn);
-      }
+      } // <-- correctly closes the if block
     };
 
     quizOptions.appendChild(btn);
   });
+
   // Ensure buttons are enabled when a new question is rendered
   document.querySelectorAll(".answer-btn").forEach(b => b.disabled = false);
 }
