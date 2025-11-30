@@ -85,6 +85,10 @@ body{
 
 /* Arena Layout */
 
+.card-body {
+    padding: 8px 8px 8px 8px;
+}
+
 .hero-block, .enemy-block {
   position: relative;
   width: 100%;
@@ -96,7 +100,7 @@ body{
 .landscape {
   display: block;
   width: 100%;
-  height: 275px;       
+  height: 232px;       
   object-fit: cover;       
   object-position: center;
   margin: 0 auto;          
@@ -259,6 +263,13 @@ body{
 /* Media queries section */
 
 /* Medium Breakpoint (tablets, 768px and up) */
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 1rem;   /* smaller font */
+    line-height: 1.2;
+  }
+}
+
 @media (min-width: 768px) {
   .landscape {
     max-height: 300px;     /* allow more height on tablets/desktops */
