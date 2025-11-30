@@ -41,7 +41,7 @@ const arenaAssets = {
     normal: { enemy: "assets/images/webp/troll-normal.webp" },
     hard:   { enemy: "assets/images/webp/troll-hard.webp" }
   },
-  mathematics: {
+  animeManga: {
     hero: "assets/images/webp/dragon-me.webp",
     landscape: "assets/images/webp/dragon-landscape.webp",
     easy:   { enemy: "assets/images/webp/dragon-easy.webp" },
@@ -83,7 +83,8 @@ document.getElementById("startSagaBtn").onclick = () => {
   const selectedDifficulty = document.getElementById("quizDifficulty").value;
 
   // Close difficulty modal
-  const difficultyModal = bootstrap.Modal.getInstance(document.getElementById("difficultyModal"));
+  const difficultyModal = bootstrap.Modal.getInstance(
+    document.getElementById("difficultyModal"));
   if (difficultyModal) {
     difficultyModal.hide();
   }
@@ -92,14 +93,15 @@ document.getElementById("startSagaBtn").onclick = () => {
   initQuiz(selectedCategoryId, selectedDifficulty);
 
   // Open quiz arena modal
-  const quizArenaModal = new bootstrap.Modal(document.getElementById("quizArenaModal"));
+  const quizArenaModal = new bootstrap.Modal(
+    document.getElementById("quizArenaModal"));
   quizArenaModal.show();
 };
 
 
 // Fetch first using OpenTDB category ID
 async function initQuiz(categoryKey, difficulty) {
-  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty, 20);
+  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty, 19);
   console.log("QuizQuestions after fetch:", quizQuestions);
 
   if (quizQuestions.length === 0) {
@@ -122,6 +124,9 @@ function startSaga(categoryName, difficulty, quizQuestions) {
     return;
   }
 
+  // Standardise difficulty naming
+  const internalDifficulty = (difficulty === "medium") ? "normal" : difficulty;
+
   console.log("Starting saga with", quizQuestions.length, "questions");
 
   // Reset state for a fresh battle
@@ -130,7 +135,7 @@ function startSaga(categoryName, difficulty, quizQuestions) {
   currentIndex = 0;
 
   // Render arena using internal key + difficulty
-  renderArena(internalKey, difficulty);
+  renderArena(internalKey, internalDifficulty);
 
   // Show hearts at full strength
   renderHearts();
@@ -142,7 +147,6 @@ function startSaga(categoryName, difficulty, quizQuestions) {
     console.error("No quiz questions available!");
   }
 }
-
      
 /* ===========================
    BATTLE FUNCTIONS
@@ -174,7 +178,8 @@ function renderHearts() {
   const radius = 70; // distance from center (adjust for mobile/desktop)
 
   for (let i = 0; i < totalHearts; i++) {
-    const angle = (i / totalHearts) * 2 * Math.PI; // distribute evenly around circle
+    const angle = (i / totalHearts)
+     * 2 * Math.PI; // distribute evenly around circle
 
     // Hero hearts
     const heroHeart = document.createElement("img");
@@ -284,7 +289,7 @@ function renderFlashcards() {
         <p><strong>Q:</strong> ${card.question}</p>
         <p><strong>Your Answer:</strong> ${card.userAnswer}</p>
         <p><strong>Correct Answer:</strong> ${card.correctAnswer}</p>
-        ${card.link ? `<p><a href="${card.link}" target="_blank">Learn more</a></p>` : ""}
+        ${card.link ? '<p><a href="' + card.link + '" target="_blank">Learn more</a></p>' : ""}
         <button class="btn btn-danger btn-sm" onclick="deleteFlashcard(${index})">Delete</button>
       </div>`;
     list.appendChild(item);
@@ -409,12 +414,12 @@ function mapDifficulty(difficulty) {
 const openTdbCategoryIds = {
   generalKnowledge: 9,
   scienceComputers: 18,
-  mathematics: 19, 
+  animeManga: 31, 
   history: 23
 };
 
 // Fetch quiz questions from OpenTDB
-async function fetchQuizQuestions(categoryName, difficulty, amount = 20) {
+async function fetchQuizQuestions(categoryName, difficulty, amount = 19) {
   const categoryId = openTdbCategoryIds[categoryName];
   const apiDifficulty = mapDifficulty(difficulty);
 
@@ -445,7 +450,7 @@ async function fetchQuizQuestions(categoryName, difficulty, amount = 20) {
 const categoryMap = {
   "generalKnowledge": "generalKnowledge",
   "scienceComputers": "scienceComputers",
-  "mathamatics": "mathematics",
+  "animeManga": "animeManga",
   "history": "history"
 };
 
@@ -576,11 +581,3 @@ async function fetchRecommendedLink(query) {
     return null;
   }
 }
-
-// Link Start Saga button to initQuiz
-document.getElementById("startSagaBtn").onclick = function () {
-  const categoryKey = document.getElementById("quizCategory").value;
-  const difficulty = document.getElementById("quizDifficulty").value;
-
-  initQuiz(categoryKey, difficulty);
-};
