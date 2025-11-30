@@ -209,13 +209,20 @@ function renderHearts() {
 }
 
 // Handle answer and update lives
+
 function handleAnswer(isCorrect) {
+  // Disable all answer buttons immediately
+  document.querySelectorAll(".answer-btn").forEach(btn => btn.disabled = true);
+
+  const heroImg = document.querySelector(".hero");
+  const enemyImg = document.querySelector(".enemy");
+
   if (isCorrect) {
-    // Correct: enemy loses a life
     enemyLives--;
+    giveFeedback(enemyImg); // enemy shakes
   } else {
-    // Wrong: hero loses a life
     heroLives--;
+    giveFeedback(heroImg);  // hero shakes
   }
 
   // Update visuals
@@ -224,6 +231,13 @@ function handleAnswer(isCorrect) {
   // Check if battle has ended
   checkBattleEnd();
 }
+
+// Feedback helper (subtle shake only)
+function giveFeedback(targetElement) {
+  targetElement.classList.add("shake");
+  setTimeout(() => targetElement.classList.remove("shake"), 300);
+}
+
 
 // Check battle end conditions
 function checkBattleEnd() {
@@ -327,7 +341,7 @@ function showQuestion(q) {
 
   options.forEach(option => {
     const btn = document.createElement("button");
-    btn.className = "btn btn-outline-primary m-1";
+    btn.className = "btn btn-outline-primary m-1 answer-btn";
     btn.textContent = decodeHtml(option);
 
     btn.onclick = () => {
@@ -362,6 +376,9 @@ function showQuestion(q) {
         }
       }
 
+      // Lock all answer buttons after first click
+      document.querySelectorAll(".answer-btn").forEach(b => b.disabled = true);
+
       // Show Next Question button (only once per question)
       if (!document.getElementById("nextBtn")) {
         const nextBtn = document.createElement("button");
@@ -375,7 +392,10 @@ function showQuestion(q) {
 
     quizOptions.appendChild(btn);
   });
+  // Ensure buttons are enabled when a new question is rendered
+  document.querySelectorAll(".answer-btn").forEach(b => b.disabled = false);
 }
+
 function nextQuestion() {
   // Check battle state first
   if (heroLives <= 0) {
