@@ -101,7 +101,7 @@ document.getElementById("startSagaBtn").onclick = () => {
 
 // Fetch first using OpenTDB category ID
 async function initQuiz(categoryKey, difficulty) {
-  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty, 19);
+  quizQuestions = await fetchQuizQuestions(categoryKey, difficulty, 20);
   console.log("QuizQuestions after fetch:", quizQuestions);
 
   if (quizQuestions.length === 0) {
@@ -419,7 +419,7 @@ const openTdbCategoryIds = {
 };
 
 // Fetch quiz questions from OpenTDB
-async function fetchQuizQuestions(categoryName, difficulty, amount = 19) {
+async function fetchQuizQuestions(categoryName, difficulty, amount = 20) {
   const categoryId = openTdbCategoryIds[categoryName];
   const apiDifficulty = mapDifficulty(difficulty);
 
