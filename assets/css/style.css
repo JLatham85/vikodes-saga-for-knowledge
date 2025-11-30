@@ -294,14 +294,26 @@ body{
 
 /* iPad Portrait (768–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .quiz-modal .modal-dialog {
+    max-width: 750px;   /* expand modal */
+  }
+
+  /* Scale all arena images */
+  .hero, .enemy, .heart, .landscape {
+    transform: scale(1.2);   /* enlarge consistently */
+  }
+
+  /* Optional: keep proportions tidy */
   .hero, .enemy {
-    max-width: 85%;   /* slightly narrower for portrait */
+    max-width: 90%;
   }
-  .card-title {
-    font-size: 1.2rem; /* scale up for readability */
+  .heart {
+    width: 28px;
+    height: 28px;
   }
-  .modal-dialog {
-    max-width: 600px; /* keep modals compact */
+  .landscape {
+    max-width: 95%;
+    height: auto;
   }
 }
 
