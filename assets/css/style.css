@@ -177,6 +177,14 @@ body{
   display: inline-block;
 }
 
+/* Form Styling */
+
+.invalid-feedback {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+
 /* Navbar Styles */
 
 .logo {
