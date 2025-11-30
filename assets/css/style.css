@@ -304,14 +304,14 @@ body{
 
   /* Base image bigger */
   .base-me-img {
-    max-width: 80%;
+    max-width: 50%;
     height: auto;
     margin: 0 auto;
     display: block;
   }
 
   /* Fix numeric overhang in How to Play */
-  #howtoplay .modal-body {
+  #howtoplay .modal-dialog {
     padding: 0 1rem;
     line-height: 1.4;
   }
@@ -331,7 +331,7 @@ body{
   /* Hero & enemy images bigger inside circle */
   .hearts-circle img.hero,
   .hearts-circle img.enemy {
-    width: 200px;   
+    width: 250px;   
     height: auto;
   }
 
