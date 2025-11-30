@@ -352,6 +352,11 @@ body{
   object-position: center;
   margin: 0 auto;          
   }
+
+  /* Landscape images smaller */
+  #hero-landscape, #enemy-landscape {
+    max-width: 100%;
+  }
 }
 
 /* iPad Landscape (768–1024px) */
