@@ -40,6 +40,27 @@ body{
 
 /* Button Styles */
 
+.btn {
+  background-color: var(--eerie-black);
+    color: var(--white);
+    font-family: var(--retro-font);
+    width: 100%;
+    border: none;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: var(--gold);
+    color: var(--fire-brick);
+    opacity: 0.8;
+}
+
+.btn.selected {
+  background-color: var(--white);
+  color: var(--eerie-black);
+  opacity: 0.8;
+}
+
 .nav-btn {
     background-color: var(--fire-brick);
     color: var(--gold);
@@ -55,6 +76,19 @@ body{
     opacity: 0.8;
 }
 
+.modal-btn {
+    background-color: var(--gold);
+    color: var(--fire-brick);
+    font-family: var(--retro-font);
+    border: none;
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+    background-color: var(--eerie-black);
+    color: var(--white);
+    opacity: 0.8;
+}
 
 /* Arena Layout */
 
@@ -150,11 +184,15 @@ body{
   display: inline-block;
 }
 
-/* Form Styling */
+/* Modal Styling */
 
 .invalid-feedback {
   color: var(--eerie-black);
   font-weight: 600;
+}
+
+.modal-footer{
+  justify-content: center;
 }
 
 /* Navbar Styles */

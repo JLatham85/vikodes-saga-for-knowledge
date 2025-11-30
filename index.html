@@ -213,7 +213,7 @@
             <div class="modal-footer">
               <button
                 type="button"
-                class="introModal btn btn-primary"
+                class="introModal modal-btn btn btn-primary"
                 data-bs-dismiss="modal"
               >
                 Begin Saga
@@ -264,7 +264,10 @@
                   ></textarea>
                   <div class="invalid-feedback">Please enter your message.</div>
                 </div>
-                <button type="submit" class="submit-btn btn btn-primary">
+                <button
+                  type="submit"
+                  class="modal-btn btn btn-primary d-block mx-auto"
+                >
                   Raven Fly
                 </button>
               </form>
@@ -356,7 +359,7 @@
                     >Were there parts of the website you didn't find
                     helpful?</label
                   >
-                  <textarea class="form-control" rows="2"></textarea>
+                  <textarea class="form-control" rows="2" required></textarea>
                 </div>
 
                 <!-- Faulty links -->
@@ -377,7 +380,7 @@
                   <label class="form-label"
                     >Were there any features you did not like?</label
                   >
-                  <textarea class="form-control" rows="2"></textarea>
+                  <textarea class="form-control" rows="2" required></textarea>
                 </div>
 
                 <!-- Experience with features -->
@@ -385,7 +388,7 @@
                   <label class="form-label"
                     >Describe your experience with the features</label
                   >
-                  <textarea class="form-control" rows="3"></textarea>
+                  <textarea class="form-control" rows="3" required></textarea>
                 </div>
 
                 <!-- Text clarity -->
@@ -406,7 +409,7 @@
                   <label class="form-label"
                     >Describe your experience with text clarity</label
                   >
-                  <textarea class="form-control" rows="2"></textarea>
+                  <textarea class="form-control" rows="2" required></textarea>
                 </div>
 
                 <!-- Accessibility -->
@@ -415,7 +418,7 @@
                     >Are there any accessibility problems (e.g. contrast, font
                     size)?</label
                   >
-                  <textarea class="form-control" rows="2"></textarea>
+                  <textarea class="form-control" rows="2" required></textarea>
                 </div>
 
                 <!-- Overall rating -->
@@ -440,8 +443,11 @@
                 </div>
 
                 <!-- Submit -->
-                <button type="submit" class="btn btn-primary">
-                  Submit Feedback
+                <button
+                  type="submit"
+                  class="modal-btn btn btn-primary d-block mx-auto"
+                >
+                  Push of the Longship
                 </button>
               </form>
             </div>
@@ -453,9 +459,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">
-                How to Play Vikodes Saga for Knowledge
-              </h5>
+              <h5 class="modal-title">How to Play</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -465,36 +469,42 @@
             <div class="modal-body">
               <ol>
                 <li>
-                  <strong>Start Your Saga:</strong> Click the "Start Saga"
-                  button to begin your adventure. Choose your quiz category and
-                  difficulty level to set the stage for your journey.
+                  <em>Start Your Saga:</em>
+                  Click the "Start Saga" button to begin your adventure. Choose
+                  your quiz category and difficulty level to set the stage for
+                  your journey.
                 </li>
+                <hr />
                 <li>
-                  <strong>Battle Mechanics:</strong> Answer quiz questions to
-                  attack your enemy. Correct answers deal damage, while wrong
-                  answers allow the enemy to strike back. Keep an eye on your
-                  health and theirs!
+                  <em>Battle Mechanics:</em> Answer quiz questions to attack
+                  your enemy. Correct answers deal damage, while wrong answers
+                  allow the enemy to strike back. Keep an eye on your health and
+                  theirs!
                 </li>
+                <hr />
                 <li>
-                  <strong>Use Flashcards:</strong> Access the Flashcards
-                  Monastery from the main menu to review key concepts and
-                  prepare for upcoming battles. Strengthen your knowledge to
-                  improve your chances of victory.
+                  <em>Use Flashcards:</em> Access the Flashcards Monastery from
+                  the main menu to review key concepts and prepare for upcoming
+                  battles. Strengthen your knowledge to improve your chances of
+                  victory.
                 </li>
+                <hr />
                 <li>
-                  <strong>Victory Conditions:</strong> Defeat all enemies by
-                  reducing their health to zero. Each victory brings you closer
-                  to mastering the saga of knowledge!
+                  <em>Victory Conditions:</em> Defeat all enemies by reducing
+                  their health to zero. Each victory brings you closer to
+                  mastering the saga of knowledge!
                 </li>
+                <hr />
                 <li>
-                  <strong>Feedback and Support:</strong> Use the Feedback and
-                  Contact Us modals to share your thoughts or seek assistance.
-                  Your input helps us improve the game experience.
+                  <em>Feedback and Support:</em> Use the Feedback and Contact Us
+                  modals to share your thoughts or seek assistance. Your input
+                  helps us improve the game experience.
                 </li>
               </ol>
+              <hr />
               <p>
-                <strong>Tip:</strong> Each difficulty changes the challenge of
-                the riddles.
+                <em>Tip:</em> Each difficulty changes the challenge of the
+                riddles.
               </p>
               <hr />
               Embark on your quest for knowledge, brave the challenges ahead,
@@ -556,7 +566,7 @@
               </select>
             </div>
             <div class="modal-footer">
-              <button id="startSagaBtn" class="btn btn-primary">
+              <button id="startSagaBtn" class="modal-btn btn btn-primary">
                 Start Saga
               </button>
             </div>
