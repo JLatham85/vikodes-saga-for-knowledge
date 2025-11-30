@@ -40,7 +40,7 @@ body{
 
 /* Button Styles */
 
-.btn {
+.nav-btn {
     background-color: var(--fire-brick);
     color: var(--gold);
     font-family: var(--retro-font);
@@ -48,40 +48,13 @@ body{
     border: none;
 }
 
-.btn:hover,
-.btn:focus {
+.nav-btn:hover,
+.nav-btn:focus {
     background-color: var(--gold);
     color: var(--fire-brick);
     opacity: 0.8;
 }
 
-.contact-btn {
-    background-color: var(--eerie-black);
-    color: var(--white);
-    font-family: var(--retro-font);
-    border: none;
-}
-
-.contact-btn:hover,
-.contact-btn:focus {
-    background-color: var(--white);
-    color: var(--eerie-black);
-    opacity: 0.8;
-}
-
-.submit-btn {
-    background-color: var(--gold);
-    color: var(--fire-brick);
-    font-family: var(--retro-font);
-    border: none;
-}
-
-.submit-btn:hover,
-.submit-btn:focus {
-    background-color: var(--white);
-    color: var(--eerie-black);
-    opacity: 0.8;
-}
 
 /* Arena Layout */
 
