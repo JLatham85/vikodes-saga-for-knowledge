@@ -180,10 +180,9 @@ body{
 /* Form Styling */
 
 .invalid-feedback {
-  color: var(--gold);
+  color: var(--eerie-black);
   font-weight: 600;
 }
-
 
 /* Navbar Styles */
 
