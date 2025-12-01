@@ -359,46 +359,19 @@ body{
   }
 }
 
-/* Laptop Layout */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  /* Question arena: hero/enemy side by side */
-  .quiz-arena {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px; /* hero | question | enemy */
-    grid-gap: 1rem;
-    align-items: center;
-  }
-
-  .hero-block, .enemy-block {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Flashcards in 2 columns */
-  .flashcards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
-  }
-
-  .flashcard {
-    width: 100%;
-  }
-}
-
 /* Laptop (1025–1440px) */
 @media (min-width: 1025px) and (max-width: 1440px) {
-  /* Arena layout: hero | question | enemy */
-  .card-body {
+  /* Arena layout: enemy | quiz | hero */
+  #arena {
     display: grid;
-    grid-template-columns: 220px 1fr 220px; /* hero | question | enemy */
+    grid-template-columns: 220px 1fr 220px;
     gap: 1rem;
     align-items: start;
   }
 
-  .hero-block { grid-column: 1; }
-  .enemy-block { grid-column: 3; }
-  /* Question content naturally sits in grid-column: 2 */
+  .enemy-block { grid-column: 1; }
+  #quizContainer { grid-column: 2; }
+  .hero-block { grid-column: 3; }
 
   /* Flashcards in 2 columns */
   #flashcardList {
@@ -407,22 +380,23 @@ body{
     gap: 1rem;
   }
   #flashcardList > div {
-    width: 100%; /* each flashcard item */
+    width: 100%;
   }
 }
 
 /* Desktop (1441px+) */
 @media (min-width: 1441px) {
-  /* Arena layout wider */
-  .card-body {
+  /* Arena layout wider: enemy | quiz | hero */
+  #arena {
     display: grid;
     grid-template-columns: 260px 1fr 260px;
     gap: 1.5rem;
     align-items: start;
   }
 
-  .hero-block { grid-column: 1; }
-  .enemy-block { grid-column: 3; }
+  .enemy-block { grid-column: 1; }
+  #quizContainer { grid-column: 2; }
+  .hero-block { grid-column: 3; }
 
   /* Flashcards in 2 columns, wider spacing */
   #flashcardList {
