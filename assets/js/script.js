@@ -1,3 +1,6 @@
+/* jshint esversion: 8 */
+/* global bootstrap, quizFeedback, fetchMoreQuestions */
+
 /* ===========================
    VARIABLES AND CONSTANTS
    =========================== */
@@ -9,15 +12,9 @@ let flashcards = [];
 let currentIndex = 0;
 let heroLives = 10;
 let enemyLives = 10;
-let selectedCategory = null;
-let selectedDifficulty = null;
-let heroMeeple = "";
-let enemyMeeple = "";
-let landscapeMeeple = "";
 
 // Link to HTML containers
 
-const arena = document.getElementById("arena");
 const quizContainer = document.getElementById("quizContainer");
 const heroHearts = document.getElementById("hero-hearts");
 const enemyHearts = document.getElementById("enemy-hearts");
@@ -61,11 +58,6 @@ const arenaAssets = {
 /*  ===========================
     HELPER FUNCTIONS
     =========================== */
-
-// Put renderImage() here so other functions can utilise
-function renderImage(path, altText) {
-  return `<img src="${path}" alt="${altText}">`;
-}
 
 function decodeHtml(html) {
   const txt = document.createElement("textarea");
@@ -112,9 +104,6 @@ async function initQuiz(categoryKey, difficulty) {
   const categoryName = categoryKey;
   startSaga(categoryName, difficulty, quizQuestions); // pass questions in
 }
-
-
-
 
 // Start Saga function
 function startSaga(categoryName, difficulty, quizQuestions) {
@@ -299,23 +288,6 @@ function endBattle(feedbackEl) {
   }; 
 
   feedbackEl.appendChild(finishBtn);
-}
-
-/* ===========================
-   FLASHCARD FUNCTIONS
-   =========================== */
-   
-// Add to flashcards function
-
-function addToFlashcards(questionObj) {
-  // Avoid duplicates
-  if (!flashcards.some(fc => fc.question === questionObj.question)) {
-    flashcards.push({
-      question: decodeHtml(questionObj.question),
-      correctAnswer: decodeHtml(questionObj.correct_answer)
-    });
-  }
-  renderFlashcards();
 }
 
 // Render flashcards in the modal template
@@ -607,28 +579,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-/* ===========================
-   LINK FUNCTIONS
-   =========================== */
-
-// Fetch Recommended Link Function
-
-async function fetchRecommendedLink(query) {
-   try {
-    const response = await fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`
-    );
-    const data = await response.json();
-
-    if (data.query.search.length > 0) {
-      const title = data.query.search[0].title;
-      return `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.error("Link fetch failed:", error);
-    return null;
-  }
-}

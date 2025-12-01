@@ -434,9 +434,9 @@ I used [W3C Markup Validation Service](https://validator.w3.org/#validate_by_inp
 
 - Main page with sections (Prettier kept adding trailing slashes back, so concentrated time on actual errors) 28 Errors and 1 warnings to correct. 
 
-![Test 1 - index.html](docs/testing/)
+![Test 1 - index.html](docs/testing/index.html-test1.png)
 
-![Test 2 - index.html](docs/design/index.html-test2.png)
+![Test 2 - index.html](docs/testing/index.html-test2.png)
 
 <!--Brief description of validators used, what was tested i.e. page amount, how many errors. Also Pic example-->
 
@@ -446,9 +446,34 @@ I used [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/). I hav
 
 - CSS stylesheet checker returned no errors
 
-![Test 1 - css.style](docs/design/css.style-test1.png)
+![Test 1 - css.style](docs/testing/style.css-test1.png)
 
 <!--Brief description of validators used, what was tested i.e. page amount, how many errors. Also Pic example-->
+
+##### JavaScript:
+
+I used [JS Hint](https://jshint.com/). I have tested script.js.
+
+- 105 warnings
+- 3 Undefined variables
+- 10 unused variables
+
+![Test 1 - Image 1 - script.js](docs/testing/script.js-test1-img1.png)
+![Test 1 - Image 2 - script.js](docs/testing/script.js-test1-img2.png)
+
+![Test 2 - script.js](docs/testing/script.js-test2-img.png)
+
+<!--Brief description of validators used, what was tested i.e. page amount, how many errors. Also Pic example-->
+
+#### User Story Testing:
+
+| User Story                                                                               | Result                                                                    | Pass | Screenshot                                                |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---- | --------------------------------------------------------- |
+| As a new user, I want clear instructions and intuitive navigation so I can understand how to play and learn without confusion.                                         | Added How to play and simple navigation on landing page         | Yes  | [How to Pay Button](docs/testing/how-to-play-button.png "How to Pay Button") and [How to Pay Instruction](docs/testing/how-to-play-instructions.png "How to Pay Instructions")         |
+| As a learner who wants to improve, I want to review questions I got wrong, so I can reinforce my understanding and track my progress.                   | User can can view incorrect answers in "Flashcards"                                            | Yes  | [Flashcards View](docs/testing/flashcards-view.png "Flashcards View")               |
+| As a user with varying needs, I want the site to be accessible across devices and screen readers so I can engage with the content comfortably.                        | Mobile first approach for the build | Yes  | I have tested across all platforms   |
+| As a returning user, I want consistent design and behavior across all pages so I feel immersed in a cohesive experience.           | Same consistency throughout site    | Yes  | Planned prior to building the site and maintained vigilence throughout buld |
+| As a player, I want visual feedback (damage dealt or received) based on my answers so I feel engaged and motivated to improve.                | Added hearts that decrease either enemy or hero depending on the wrong or right answer and the a shake function to highlight more                                                   | Yes  | Please play the game to see               |
 
 </details>
 
