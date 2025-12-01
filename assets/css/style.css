@@ -370,28 +370,28 @@ body{
 
   /* Arena layout: enemy | quiz | hero */
   #arena {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* give quiz more space, hero/enemy balanced */
-    gap: 2rem;
-    align-items: start;
-    justify-items: center; /* center hero/enemy in their columns */
+    display: flex;
+    flex-direction: column;        
+    justify-content: space-evenly; 
+    align-items: center;           
+    height: 100%;                  
   }
 
-  .enemy-block { grid-column: 1; }
-  #quizContainer { grid-column: 2; }
-  .hero-block { grid-column: 3; }
+  .hero-block { order: 1; }
+  #quizContainer { order: 2; }
+  .enemy-block { order: 3; }
 
   /* Flashcards in 2 columns */
-  #flashcardList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
   #flashcardList > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* ensures delete button stays at bottom */
-    width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between; /* content at top, delete button at bottom */
+   height: 100%; /* ensures full card height */
+  }
+
+  #flashcardList button {
+    margin-top: auto; /* pushes button to bottom of flex column */
+    align-self: flex-end; /* optional: align right */
   }  
 }
 
@@ -406,29 +406,27 @@ body{
 
   /* Arena layout wider: enemy | quiz | hero */
   #arena {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr; /* quiz gets even more space */
-    gap: 2rem;
-    align-items: start;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
   }
 
-  .enemy-block { grid-column: 1; }
-  #quizContainer { grid-column: 2; }
-  .hero-block { grid-column: 3; }
+  .hero-block { order: 1; }
+  #quizContainer { order: 2; }
+  .enemy-block { order: 3; }
 
   /* Flashcards in 2 columns, wider spacing */
-  #flashcardList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
   #flashcardList > div {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-between; /* content at top, delete button at bottom */
+    height: 100%; /* ensures full card height */
+  }
+
+  #flashcardList button {
+    margin-top: auto; /* pushes button to bottom of flex column */
+    align-self: flex-end; /* optional: align right */
   }
 }
-
-
