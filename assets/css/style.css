@@ -197,6 +197,15 @@ body{
   justify-content: center;
 }
 
+/* List FIxes */
+.saga-list li {
+  margin-bottom: 1em; /* adds spacing between items */
+}
+.saga-list li:last-child {
+  margin-bottom: 0; /* no extra space after last item */
+}
+
+
 /* Navbar Styles */
 
 .logo {
