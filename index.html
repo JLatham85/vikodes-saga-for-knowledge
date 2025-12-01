@@ -234,6 +234,7 @@
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
+                aria-label="Close"
               ></button>
             </div>
             <div class="modal-body">
@@ -285,6 +286,7 @@
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
+                aria-label="Close"
               ></button>
             </div>
             <div class="modal-body">
@@ -332,10 +334,10 @@
 
                 <!-- Was navigating the game easy -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="navigation-ease" class="form-label"
                     >Was navigating the game easy?</label
                   >
-                  <select class="form-select" required>
+                  <select id="navigation-ease" class="form-select" required>
                     <option value="">Choose...</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -346,10 +348,15 @@
 
                 <!-- Colour scheme -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="colour-appealing" class="form-label"
                     >Was the colour scheme appealing and comfortable?</label
                   >
-                  <textarea class="form-control" rows="2" required></textarea>
+                  <textarea
+                    id="colour-appealing"
+                    class="form-control"
+                    rows="2"
+                    required
+                  ></textarea>
                   <div class="invalid-feedback">
                     Please describe your experience.
                   </div>
@@ -357,19 +364,24 @@
 
                 <!-- Unhelpful parts -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="not-helpful" class="form-label"
                     >Were there parts of the website you didn't find
                     helpful?</label
                   >
-                  <textarea class="form-control" rows="2" required></textarea>
+                  <textarea
+                    id="not-helpful"
+                    class="form-control"
+                    rows="2"
+                    required
+                  ></textarea>
                 </div>
 
                 <!-- Faulty links -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="faulty-links" class="form-label"
                     >Did you come across any faulty links?</label
                   >
-                  <select class="form-select" required>
+                  <select id="faulty-links" class="form-select" required>
                     <option value="">Choose...</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -379,26 +391,36 @@
 
                 <!-- Features disliked -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="bad-features" class="form-label"
                     >Were there any features you did not like?</label
                   >
-                  <textarea class="form-control" rows="2" required></textarea>
+                  <textarea
+                    id="bad-features"
+                    class="form-control"
+                    rows="2"
+                    required
+                  ></textarea>
                 </div>
 
                 <!-- Experience with features -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="feature-experiance" class="form-label"
                     >Describe your experience with the features</label
                   >
-                  <textarea class="form-control" rows="3" required></textarea>
+                  <textarea
+                    id="feature-experiance"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
                 </div>
 
                 <!-- Text clarity -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="clear-text" class="form-label"
                     >Were the text elements clear and readable?</label
                   >
-                  <select class="form-select" required>
+                  <select id="clear-text" class="form-select" required>
                     <option value="">Choose...</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -408,27 +430,37 @@
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="text-clarity" class="form-label"
                     >Describe your experience with text clarity</label
                   >
-                  <textarea class="form-control" rows="2" required></textarea>
+                  <textarea
+                    id="text-clarity"
+                    class="form-control"
+                    rows="2"
+                    required
+                  ></textarea>
                 </div>
 
                 <!-- Accessibility -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="accessibility" class="form-label"
                     >Are there any accessibility problems (e.g. contrast, font
                     size)?</label
                   >
-                  <textarea class="form-control" rows="2" required></textarea>
+                  <textarea
+                    id="accessibility"
+                    class="form-control"
+                    rows="2"
+                    required
+                  ></textarea>
                 </div>
 
                 <!-- Overall rating -->
                 <div class="mb-3">
-                  <label class="form-label"
+                  <label for="overall-rating" class="form-label"
                     >How would you rate the overall website?</label
                   >
-                  <select class="form-select" required>
+                  <select id="overall-rating" class="form-select" required>
                     <option value="">Choose...</option>
                     <option>Excellent</option>
                     <option>Good</option>
@@ -440,8 +472,14 @@
 
                 <!-- Suggestions -->
                 <div class="mb-3">
-                  <label class="form-label">Any Suggestions?</label>
-                  <textarea class="form-control" rows="3"></textarea>
+                  <label for="suggestions" class="form-label"
+                    >Any Suggestions?</label
+                  >
+                  <textarea
+                    id="suggestions"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
                 </div>
 
                 <!-- Submit -->
@@ -466,6 +504,7 @@
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
+                aria-label="Close"
               ></button>
             </div>
             <div class="modal-body">
@@ -521,6 +560,7 @@
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
+                aria-label="Close"
               ></button>
             </div>
             <div class="modal-body">
