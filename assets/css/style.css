@@ -364,34 +364,9 @@ body{
 
   /* Intro Modal wider */
   #introModal .modal-dialog {
-    max-width: 900px; /* wider than portrait */
-    margin: 0 auto;
+    max-width: 900px;
   }
-
-  /* Arena layout: enemy | quiz | hero */
-  #quizArenaModal .modal-body {
-    min-height: 70vh; /* give vertical space */
-  }
-
-  #arena {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* enemy | quiz | hero */
-    gap: 2rem;
-    align-items: stretch;   /* make blocks fill vertical space */
-    justify-items: center;  /* center content horizontally in each column */
-    height: 100%;
-  }
-
-  .enemy-block { grid-column: 1; }
-  #quizContainer { grid-column: 2; }
-  .hero-block { grid-column: 3; }
-
-  .enemy-block, .hero-block, #quizContainer {
-    width: 100%;
-    height: 100%; /* fill modal body */
-  }
-
-
+  
   /* Flashcards in 2 columns */
   #flashcardList {
     display: grid;
@@ -402,13 +377,23 @@ body{
   #flashcardList .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* content at top, delete button at bottom */
+    justify-content: space-between; 
     height: 100%;
   }
 
   #flashcardList .card-body button {
-    margin-top: auto;   /* pushes button down */
-    align-self: flex-end; /* optional: align right */
+    margin-top: auto;   
+    align-self: flex-end; 
+  }
+
+  /* Landscape images full width */
+  .landscape {
+  display: block;
+  width: 100%;
+  height: 280px;       
+  object-fit: cover;       
+  object-position: center;
+  margin: 0 auto;          
   }
 }
 
@@ -419,32 +404,9 @@ body{
   #introModal .modal-dialog {
     max-width: 1100px;
     margin: 0 auto;
-  }
-
-  /* Arena layout wider: enemy | quiz | hero */
-  #quizArenaModal .modal-body {
-    min-height: 75vh;
-  }
-
-  #arena {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr; /* enemy | quiz | hero */
-    gap: 2rem;
-    align-items: stretch;
-    justify-items: center;
     height: 100%;
   }
-
-  .enemy-block { grid-column: 1; }
-  #quizContainer { grid-column: 2; }
-  .hero-block { grid-column: 3; }
-
-  .enemy-block, .hero-block, #quizContainer {
-    width: 100%;
-    height: 100%;
-  }
-
-
+  
   /* Flashcards in 2 columns */
   #flashcardList {
     display: grid;
@@ -455,12 +417,22 @@ body{
   #flashcardList .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* content at top, delete button at bottom */
+    justify-content: space-between; 
     height: 100%;
   }
 
   #flashcardList .card-body button {
-    margin-top: auto;   /* pushes button down */
-    align-self: flex-end; /* optional: align right */
+    margin-top: auto;   
+    align-self: flex-end; 
+  }
+
+  /* Landscape images full width */
+  .landscape {
+  display: block;
+  width: 100%;
+  height: 280px;       
+  object-fit: cover;       
+  object-position: center;
+  margin: 0 auto;          
   }
 }
