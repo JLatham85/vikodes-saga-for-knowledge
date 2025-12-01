@@ -322,8 +322,6 @@ The completed website will be responsive to the Bootstrap breakpoints, which wil
 
 ## Future Improvements<!--Add targets once website complete-->
 
-- Add Flashcard Review Mode for missed questions, allowing users to revisit and master difficult topics
-- Introduce Difficulty Levels to tailor quiz battles to different skill levels
 - Implement Unlockable Characters and Gear as rewards for progress and replayability
 - Expand Question Categories to support broader learning themes and subject areas
 - Add Multilingual Support to make the experience accessible to non-English speakers
@@ -374,6 +372,8 @@ Planned or optional additions:
 - Copilot — AI-powered coding companion used for iterative development, debugging, and creative problem-solving
 - Markdown — For structured documentation and GitHub formatting
 - Netlify / GitHub Pages — For deployment and live hosting
+- Google Gemini (Images)
+- JS Lint
 
 </details>
 
@@ -393,12 +393,15 @@ This universe was fully tested, I have used the table below to document any bugs
 
 | Bug Found                                                                | Resolved | How                                                                                                      |
 | ------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------- |
-| Description boxes in feedback for were set to required now removed       | Yes      | Removed the "required" component across all description boxes                                            |
-| Navigation bar was not closing selecting a section                       | Yes      | Added Javescript which helped the navbar recognise something had been selected in order for it to close. |
-| Background image to main title wasn't loading                            | Yes      | The filepath was incorrect needed to add full filepath including gloomhaven-universe                     |
-| Changed layout from seperate pages to 1 scroll page                      | Yes      | Userinter face changed as I felt there were too many clicks. Not very user freindly                      |
-| Card heights were fluctuating                                            | Yes      | Added d-flex to the component                                                                            |
-| On bigger screen sizes cards were not wrapping and leaving blank columns | Yes      | I was missing the div container class row in order for them to act as presumed                           |
+| renderQuiz was not identifying | Yes | Removed the duplicates which was preventing operation due to over writing |
+| handleANswer was not updating hearts | Yes | Added additonal Javascript to correct |
+| Incorrect classes running between HTML, CSS and JS | Yes | Went through methodically and cross-referenced |
+| Images rendering incorrectly and messy | Yes | Removed <img> tags |
+| Question quantity was stopping the end battle funnction | Yes | Searched topics that had minimum 19 question as this would got till hero or eemy loses and increased in JS |
+| Bigger screens in the flaschcard section the flashcard bodies were different heights when changes to 2 columns | Yes | set the body to be consistent and fixed the delete button to the bottom |
+|Landing page buttons still navigated before introModal showed| Yes| Locked navigation buttons until introModal Closed|
+| Site was loosing it's identity | Yes | Changed it so all font was retro |
+| Mobile version had to scroll and UX not great | Yes | Changed img sizes, landscape sizes and hearts radius |
 
 </details>
 
@@ -407,7 +410,7 @@ This universe was fully tested, I have used the table below to document any bugs
 <details> 
 <summary><i>Expand Me/ Collapse Me - I'll let you decide</i></summary>
 
-To ensure a seamless experience across all devices, I followed a mobile-first approach during development. Starting with the smallest viewport, I designed and tested the layout on an iPhone to prioritize clarity and usability for adventurers on the go. I then progressively scaled the interface, checking responsiveness on an iPad, laptop, and full desktop display. This iterative testing helped refine layout behavior, image scaling, and content flow—ensuring the Gloomhaven Universe site remains immersive and accessible across screen sizes.
+To ensure a seamless experience across all devices, I followed a mobile-first approach during development. Starting with the smallest viewport, I designed and tested the layout on an iPhone to prioritize clarity and usability for adventurers on the go. I then progressively scaled the interface, checking responsiveness on an iPad, laptop, and full desktop display. This iterative testing helped refine layout behavior, image scaling, and content flow—ensuring the Vikodes Saga for Knowledge site remains immersive and accessible across screen sizes.
 
 | Device  | Screen Size Range | Testing Focus                      | Result |
 | ------- | ----------------- | ---------------------------------- | ------ |
@@ -427,21 +430,13 @@ To ensure a seamless experience across all devices, I followed a mobile-first ap
 
 ##### HTML:
 
-I used [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input). I have tested index.html, success.html and 404.html.
+I used [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input). I have tested index.html.
 
-- Main page with sections (Prettier kept adding trailing slashes back, so concentrated time on actual errors) 61 Errors and warnings to correct. 
+- Main page with sections (Prettier kept adding trailing slashes back, so concentrated time on actual errors) 28 Errors and 1 warnings to correct. 
 
-![Test 1 - index.html](docs/design/index.html-test1.png)
+![Test 1 - index.html](docs/testing/)
 
 ![Test 2 - index.html](docs/design/index.html-test2.png)
-
-- Success page returned with no errors (Prettier kept adding trailing slashes back)
-
-![Test 1 - success.html](docs/design/sucess.html-test1.png)
-
-- 404 page returned with no errors (Prettier kept adding trailing slashes back)
-
-![Test 1 - 404.html](docs/design/404.html-test1.png)
 
 <!--Brief description of validators used, what was tested i.e. page amount, how many errors. Also Pic example-->
 
