@@ -102,7 +102,7 @@ async function initQuiz(categoryKey, difficulty) {
   }
 
   const categoryName = categoryKey;
-  startSaga(categoryName, difficulty, quizQuestions); // pass questions in
+  startSaga(categoryName, difficulty, quizQuestions); 
 }
 
 // Start Saga function
@@ -167,7 +167,7 @@ function renderHearts() {
   const radius = window.innerWidth < 576 ? 55 : 70;
 
   for (let i = 0; i < totalHearts; i++) {
-    const angle = (i / totalHearts) * 2 * Math.PI; // distribute evenly around circle
+    const angle = (i / totalHearts) * 2 * Math.PI; 
 
     // Hero hearts
     const heroHeart = document.createElement("img");
@@ -208,10 +208,10 @@ function handleAnswer(isCorrect) {
 
   if (isCorrect) {
     enemyLives--;
-    giveFeedback(enemyImg); // enemy shakes
+    giveFeedback(enemyImg); 
   } else {
     heroLives--;
-    giveFeedback(heroImg);  // hero shakes
+    giveFeedback(heroImg);  
   }
 
   // Update visuals
@@ -498,8 +498,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setTimeout(() => {
     const introModal = new bootstrap.Modal(introModalEl, {
-      backdrop: "static", // lock the page
-      keyboard: false     // prevent ESC close
+      backdrop: "static", 
+      keyboard: false    
     });
 
     // Show the modal
@@ -552,8 +552,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackForm = document.getElementById("feedbackForm");
 
   feedbackForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // stop page reload
-
+    event.preventDefault();
+    
     if (!feedbackForm.checkValidity()) {
       // If invalid, show saga-style errors
       event.stopPropagation();

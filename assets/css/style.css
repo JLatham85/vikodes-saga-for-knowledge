@@ -199,10 +199,10 @@ body{
 
 /* List FIxes */
 .saga-list li {
-  margin-bottom: 1em; /* adds spacing between items */
+  margin-bottom: 1em; 
 }
 .saga-list li:last-child {
-  margin-bottom: 0; /* no extra space after last item */
+  margin-bottom: 0; 
 }
 
 
@@ -239,7 +239,7 @@ body{
 }
 
 .navbar-toggler-icon {
-  background-image: none; /* remove default SVG */
+  background-image: none;
   width: 24px;
   height: 2px;
   background-color: var(--gold); 
@@ -298,7 +298,7 @@ body{
 /* Mobile phone (576px and up) */
 @media (max-width: 576px) {
   .card-title {
-    font-size: 1rem;   /* smaller font */
+    font-size: 1rem;   
     line-height: 1.2;
   }
 }

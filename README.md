@@ -8,6 +8,8 @@ Vikode’s Saga for Knowledge is a dynamic, quiz-based web application forged in
 
 The goal of this project is to gamify knowledge acquisition through responsive feedback, immersive visuals, and progressive challenge. Users engage in quiz battles, earning damage for correct answers and taking hits for mistakes. Future expansions may include flashcard rituals for missed questions, difficulty glyphs, unlockable warriors, and gear upgrades—making this not just a quiz, but a journey through the realms of learning.
 
+[Mockup UI](docs/design/mockup-all-framed.png)
+
 <!--Insert img with the different platforms and how the screen is displayed-->
 
 ## Contents
@@ -145,7 +147,7 @@ Whether you’re a seasoned warrior or a curious newcomer, Vikode’s Saga for K
 
 - [Desktop Wireframe](docs/wireframes/play-game-desktop.png)
 
-#### **GloomhavenHow to Play Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
+#### **How to Play Page Wireframes** <!--Create link to wireframe or copy and paste wireframe-->
 
 - [Mobile, iPad Wireframes](docs/wireframes/how-to-play-mobile-ipad.png)
 
@@ -497,11 +499,11 @@ I wanted to make sure individuals with diverse needs could access the website co
 
 - Test 1 
 
-![Test 1](docs/design/wave-test1.png)
+![Test 1](docs/testing/wave-test1.png)
 
 - Test 2
 
-![Test 2](docs/design/wave-test2.png)
+![Test 2](docs/testing/wave-test2.png)
 
 </details>
 
@@ -510,7 +512,7 @@ I wanted to make sure individuals with diverse needs could access the website co
 <details> 
 <summary><i>Expand Me/ Collapse Me - I'll let you decide</i></summary>
 
-Gloomhaven Unoverse has been tested using [Lighthouse Testing](https://lighthouse-metrics.com/lighthouse) I have checked on both Google CHrome and Microsoft edge, this is testing:
+Vikodes Knowledge for Saga has been tested using [Lighthouse Testing](https://lighthouse-metrics.com/lighthouse) I have checked on both Google CHrome and Microsoft edge, this is testing:
 
 - Performance
 - Accessibility
@@ -519,11 +521,11 @@ Gloomhaven Unoverse has been tested using [Lighthouse Testing](https://lighthous
 
 - Google Chrome Test
 
-![Google Chroome Lighthouse](docs/design/chrome-lighthouse.png)
+![Google Chroome Lighthouse](docs/testing/lighthouse-test.png)
 
 - Microsoft Edge Test
 
-![Microsoft Edge Lighthouse](docs/design/edge-lighthouse.png)
+![Microsoft Edge Lighthouse](docs/testing/lighthouse-edge-test.png)
 
 </details> <!--Add above here for Lighthouse Testing-->
 
@@ -536,7 +538,7 @@ Gloomhaven Unoverse has been tested using [Lighthouse Testing](https://lighthous
 <details open> 
 <summary><i>Expand Me/ Collapse Me - I'll let you decide</i></summary>
 
-Gloomhaven Universe was officially deployed early on in the project, as I found inconsistencies between the local and Github.
+Vikodes Saga for Knowledge was officially deployed early on in the project, as I found inconsistencies between the local and Github.
 
 - Access my repository on GitHub and navigate to settings.
 
@@ -544,7 +546,7 @@ Gloomhaven Universe was officially deployed early on in the project, as I found 
 
 - Then SAVE
 
-- Website live address [GitHub live address](https://jlatham85.github.io/gloomhaven-universe)
+- Website live address [GitHub live address](https://jlatham85.github.io/vikodes-saga-for-knowledge/)
 
 - Any future changes either by my peers suggestion or my own perfectionism can be changed and pushed to GitHub.
 
@@ -567,10 +569,9 @@ Gloomhaven Universe was officially deployed early on in the project, as I found 
 - Visual Content:
   - Myself
   - Wikipedia
-  - Jen Charlton (Frosthaven images)
 
 - Images:
-  - Co Pilot for my logo
+  - Google Gemini
 
 </details> <!--Add above here for Credits-->
 
